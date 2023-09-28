@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="{{asset ('plugins/select2/css/select2.min.css') }} ">
   <link rel="stylesheet" href="{{asset ('plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }} ">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{asset ('plugins/fontawesome-free/css/all.min.css') }} ">
+  <!-- <link rel="stylesheet" href="{{asset ('plugins/fontawesome-free/css/all.min.css') }} "> -->
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- JQVMap -->
@@ -79,6 +79,7 @@
 <!-- Bootstrap 4 -->
 <script src="{{asset ('plugins/bootstrap/js/bootstrap.bundle.min.js') }} "></script>
 <script src="{{asset ('plugins/select2/js/select2.full.min.js') }} "></script>
+<script src="https://kit.fontawesome.com/b28275dfc4.js" crossorigin="anonymous"></script>
 <!-- jQuery Knob Chart -->
 <script src="{{asset ('plugins/jquery-knob/jquery.knob.min.js') }} "></script>
 <!-- daterangepicker -->
@@ -99,7 +100,7 @@
 
 
 
-//подключаем ввод текста
+<!-- //подключаем ввод текста -->
 <script>
     $(document).ready(function() {
         $('#summernote').summernote({
@@ -122,7 +123,7 @@
     $('.select2').select2()
 </script>
 
-//чтобы в поле прикрепления окна на кнопке были три точки
+<!-- //чтобы в поле прикрепления окна на кнопке были три точки -->
 <style>
     .custom-file-input:lang(en)~.custom-file-label::after{
         content: "...";

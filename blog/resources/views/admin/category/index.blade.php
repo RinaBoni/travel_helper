@@ -49,14 +49,14 @@
                         <tr>
                           <td>{{$category->id}}</td>
                           <td>{{$category->title}}</td>
-                          <td class="text-center"><a href="{{ route('admin.category.show', $category->id) }}"><i class="fa fa-solid fa-eye"></i></a></td>
-                          <td class="text-center"><a href="{{ route('admin.category.edit', $category->id) }}"><i class="fas fa-edit"></i></a></td>
+                          <td class="text-center"><a href="{{ route('admin.category.show', $category->id) }}"><i class="fa-solid fa-eye" style="color: #1b3f7e;"></i></a></td>
+                          <td class="text-center"><a href="{{ route('admin.category.edit', $category->id) }}"><i class="fa-solid fa-pen" style="color: #1b3f7e;"></i></a></td>
                           <td class="text-center">
                             <form action="{{ route('admin.category.delete', $category->id) }}", method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="border-0 bg-transparent">
-                                    <i class="fas fa-columns text-danger" ></i>
+                                <i class="fa-solid fa-trash-can" style="color: #1b3f7e;"></i>
                                 </button>
 
                             </form>

@@ -49,14 +49,14 @@
                         <tr>
                           <td>{{$post->id}}</td>
                           <td>{{$post->title}}</td>
-                          <td class="text-center"><a href="{{ route('admin.post.show', $post->id) }}"><i class="fa fa-solid fa-eye"></i></a></td>
-                          <td class="text-center"><a href="{{ route('admin.post.edit', $post->id) }}"><i class="fas fa-edit"></i></a></td>
+                          <td class="text-center"><a href="{{ route('admin.post.show', $post->id) }}"><i class="fa-solid fa-eye" style="color: #1b3f7e;"></i></a></td>
+                          <td class="text-center"><a href="{{ route('admin.post.edit', $post->id) }}"><i class="fa-solid fa-pen" style="color: #1b3f7e;"></i></a></td>
                           <td class="text-center">
                             <form action="{{ route('admin.post.delete', $post->id) }}", method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="border-0 bg-transparent">
-                                    <i class="fas fa-columns text-danger" ></i>
+                                  <i class="fa-solid fa-trash-can" style="color: #1b3f7e;"></i>
                                 </button>
 
                             </form>
