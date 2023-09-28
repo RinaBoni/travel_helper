@@ -29,7 +29,9 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-        return view('admin.post.edit', compact('post'));
+        $categories = Category::all();
+        $tags = Tag::all();
+        return view('admin.post.edit', compact('post', 'categories', 'tags'));
     }
 
     public function index()
@@ -48,11 +50,13 @@ class PostController extends Controller
     {
         try{
             $data = $request->validated();
+
             $tagIds = $data['tag_ids'];
             unset($data['tag_ids']);
             //заносим в бд путь к изображению (Storage::put сохраняет изображение и возвращает путь к нему)
-            $data['preview_image'] = Storage::put('/images', $data['preview_image']);
-            $data['main_image'] = Storage::put('/images', $data['main_image']);
+            $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
+            $data['main_image'] = Storage::disk('public')->put('/images', $data['main_image']);
+
             $post = Post::firstOrCreate([
                 'title' => $data['title'],
                 'content' => $data['content'],
@@ -71,7 +75,16 @@ class PostController extends Controller
     public function update(UpdateRequest $request, Post $post)
     {
         $data = $request->validated();
+        $tagIds = $data['tag_ids'];
+        unset($data['tag_ids']);
+        //заносим в бд путь к изображению (Storage::put сохраняет изображение и возвращает путь к нему)
+        $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
+        $data['main_image'] = Storage::disk('public')->put('/images', $data['main_image']);
+
+
         $post->update($data);
+        $post->tags()->sync($tagIds);
+
         return view('admin.post.show', compact('post'));
     }
 }

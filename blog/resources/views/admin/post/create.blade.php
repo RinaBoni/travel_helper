@@ -62,7 +62,7 @@
                               </div>
 
                               <div class="form-group">
-                                  <textarea id="summernote" name="content"></textarea>
+                                  <textarea id="summernote" name="content"> {{ old('content') }}</textarea>
                                   @error('content')
                                       <div class="text-danger">Это поле небходимо заполнить</div>
                                   @enderror
