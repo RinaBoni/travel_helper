@@ -46,22 +46,25 @@ class PostController extends Controller
 
     public function store(StoreRequest $request)
     {
-        $data = $request->validated();
-        // dd($data);
-        $tagIds = $data['tag_ids'];
-        unset($data['tag_ids']);
-        //заносим в бд путь к изображению (Storage::put сохраняет изображение и возвращает путь к нему)
-        $data['preview_image'] = Storage::put('/images', $data['preview_image']);
-        $data['main_image'] = Storage::put('/images', $data['main_image']);
-        $post = Post::firstOrCreate([
-            'title' => $data['title'],
-            'content' => $data['content'],
-            'preview_image' => $data['preview_image'],
-            'main_image' => $data['main_image'],
-            'category_id' => $data['category_id'],
-        ]);
-        // dd($tagIds); 
+        try{
+            $data = $request->validated();
+            $tagIds = $data['tag_ids'];
+            unset($data['tag_ids']);
+            //заносим в бд путь к изображению (Storage::put сохраняет изображение и возвращает путь к нему)
+            $data['preview_image'] = Storage::put('/images', $data['preview_image']);
+            $data['main_image'] = Storage::put('/images', $data['main_image']);
+            $post = Post::firstOrCreate([
+                'title' => $data['title'],
+                'content' => $data['content'],
+                'preview_image' => $data['preview_image'],
+                'main_image' => $data['main_image'],
+                'category_id' => $data['category_id'],
+            ]);
         $post->tags()->attach($tagIds);
+        } catch(\Exception $exseption){
+            abort(404);
+        }
+
         return redirect()->route('admin.post.index');
     }
 
