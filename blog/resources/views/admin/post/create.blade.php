@@ -49,6 +49,15 @@
                         </select>
                     </div>
 
+                    <div class="form-group w-50">
+                        <label>Тэги</label>
+                        <select class="select2" name="tag_ids[]" multiple="multiple" data-placeholder="Выберите тэги" style="width: 100%;">
+                            @foreach ($tags as $tag)
+                                <option value="{{ $tag->id }}">{{ $tag->title }}</option>
+                            @endforeach
+                        </select>
+                      </div>
+
                     <div class="form-group">
                         <textarea id="summernote" name="content"></textarea>
                         @error('content')

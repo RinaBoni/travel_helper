@@ -7,6 +7,9 @@
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="{{asset ('plugins/select2/css/select2.min.css') }} ">
+  <link rel="stylesheet" href="{{asset ('plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }} ">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{asset ('plugins/fontawesome-free/css/all.min.css') }} ">
   <!-- Ionicons -->
@@ -15,6 +18,7 @@
   <link rel="stylesheet" href="{{asset ('plugins/jqvmap/jqvmap.min.css') }} ">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset ('dist/css/adminlte.min.css') }} ">
+
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="{{asset ('plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }} ">
   <!-- Daterange picker -->
@@ -74,6 +78,7 @@
 </script>
 <!-- Bootstrap 4 -->
 <script src="{{asset ('plugins/bootstrap/js/bootstrap.bundle.min.js') }} "></script>
+<script src="{{asset ('plugins/select2/js/select2.full.min.js') }} "></script>
 <!-- jQuery Knob Chart -->
 <script src="{{asset ('plugins/jquery-knob/jquery.knob.min.js') }} "></script>
 <!-- daterangepicker -->
@@ -113,6 +118,8 @@
     $(function () {
         bsCustomFileInput.init();
     });
+    //селект для тэгов
+    $('.select2').select2()
 </script>
 
 //чтобы в поле прикрепления окна на кнопке были три точки
