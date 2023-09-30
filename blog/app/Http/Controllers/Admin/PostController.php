@@ -11,7 +11,7 @@ use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class PostController extends Controller
+class PostController extends BasePostController
 {
     //этот метод позволяет при обращении к контроллера автоматически будет использоваться этот метод
     public function create()
@@ -48,42 +48,18 @@ class PostController extends Controller
 
     public function store(StoreRequest $request)
     {
-        try{
-            $data = $request->validated();
-
-            $tagIds = $data['tag_ids'];
-            unset($data['tag_ids']);
-            //заносим в бд путь к изображению (Storage::put сохраняет изображение и возвращает путь к нему)
-            $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
-            $data['main_image'] = Storage::disk('public')->put('/images', $data['main_image']);
-
-            $post = Post::firstOrCreate([
-                'title' => $data['title'],
-                'content' => $data['content'],
-                'preview_image' => $data['preview_image'],
-                'main_image' => $data['main_image'],
-                'category_id' => $data['category_id'],
-            ]);
-        $post->tags()->attach($tagIds);
-        } catch(\Exception $exseption){
-            abort(404);
-        }
-
+        //обрабатываем запрос
+        $data = $request->validated();
+        //взаимодействие с базой
+        $this->service->store($data);
         return redirect()->route('admin.post.index');
     }
 
     public function update(UpdateRequest $request, Post $post)
     {
         $data = $request->validated();
-        $tagIds = $data['tag_ids'];
-        unset($data['tag_ids']);
-        //заносим в бд путь к изображению (Storage::put сохраняет изображение и возвращает путь к нему)
-        $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
-        $data['main_image'] = Storage::disk('public')->put('/images', $data['main_image']);
 
-
-        $post->update($data);
-        $post->tags()->sync($tagIds);
+        $post = $this->service->update($data, $post);
 
         return view('admin.post.show', compact('post'));
     }
