@@ -72,7 +72,7 @@
                               <div class="form-group w-50">
                                   <label for="exampleInputFile">Добавить привью</label>
                                   <div class="w-50 mb-2">
-                                    <img src="{{url('storage/' . $post->preview_image)}}" alt="preview_image" class="w-50">
+                                    <img src="{{asset('storage/' . $post->preview_image)}}" alt="preview_image" class="w-50">
                                   </div>
                                   <div class="input-group">
                                       <div class="custom-file">
