@@ -33,7 +33,7 @@
                                   <input type="text" class="form-control" name="title" placeholder="Название поста"
                                       value="{{ old('title') }}">
                                   @error('title')
-                                      <div class="text-danger">Это поле небходимо заполнить</div>
+                                      <div class="text-danger">{{ $message }}</div>
                                   @enderror
                               </div>
 
@@ -46,6 +46,10 @@
                                               {{ $category->title }}</option>
                                       @endforeach
                                   </select>
+
+                                  @error('category_id')
+                                      <div class="text-danger">{{ $message }}</div>
+                                  @enderror
                               </div>
 
                               <div class="form-group w-50">
@@ -59,12 +63,17 @@
                                           </option>
                                       @endforeach
                                   </select>
+
+                                  @error('tag_ids')
+                                      <div class="text-danger">{{ $message }}</div>
+                                  @enderror
+
                               </div>
 
                               <div class="form-group">
                                   <textarea id="summernote" name="content"> {{ old('content') }}</textarea>
                                   @error('content')
-                                      <div class="text-danger">Это поле небходимо заполнить</div>
+                                      <div class="text-danger">{{ $message }}</div>
                                   @enderror
                               </div>
 
@@ -80,7 +89,7 @@
                                       </div>
                                   </div>
                                   @error('preview_image')
-                                      <div class="text-danger">Это поле небходимо заполнить</div>
+                                      <div class="text-danger">{{ $message }}</div>
                                   @enderror
                               </div>
 
@@ -96,7 +105,7 @@
                                       </div>
                                   </div>
                                   @error('main_image')
-                                      <div class="text-danger">Это поле небходимо заполнить</div>
+                                      <div class="text-danger">{{ $message }}</div>
                                   @enderror
                               </div>
 
