@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\User\StoreRequest;
 use App\Http\Requests\Admin\User\UpdateRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -42,16 +43,19 @@ class UserController extends Controller
     public function store(StoreRequest $request)
     {
         $data = $request->validated();
+        $data['password'] = Hash::make($data['password']);
         // dd($data);
         // $lesson->tags= implode(', ', $request->input('tags'));
-        User::firstOrCreate(['title' => $data['title']]);
+        User::firstOrCreate(['email' => $data['email']], $data);
         return redirect()->route('admin.user.index');
     }
 
     public function update(UpdateRequest $request, User $user)
     {
         $data = $request->validated();
+        // dd($data);
         $user->update($data);
         return view('admin.user.show', compact('user'));
     }
+
 }
