@@ -15,7 +15,7 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-
+        dd(auth()->user()->name);
         return $next($request);
     }
 }
