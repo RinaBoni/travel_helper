@@ -30,6 +30,7 @@
                           <form action="{{ route('admin.user.update', $user->id) }}" method="POST" class="w-25">
                               @csrf
                               @method('PATCH')
+
                               <div class="form-group">
                                   <input type="text" class="form-control" name="name"
                                       placeholder="Имя пользователя"value="{{ $user->name }}">
@@ -37,6 +38,7 @@
                                       <div class="text-danger">{{ $message }}</div>
                                   @enderror
                               </div>
+
                               <div class="form-group">
                                   <input type="text" class="form-control" name="email" placeholder="Email"
                                       value="{{ $user->email }}">
@@ -44,6 +46,24 @@
                                       <div class="text-danger">{{ $message }}</div>
                                   @enderror
                               </div>
+
+                              <div class="form-group">
+                                  <label>Выберите роль</label>
+                                  <select name="role" class="form-control" data-placeholder="Выберите роль">
+                                      @foreach ($roles as $id => $role)
+                                          <option value="{{ $id }}" {{ $id == $user->role ? ' selected' : '' }}>
+                                              {{ $role }}</option>
+                                      @endforeach
+                                  </select>
+                                  @error('role')
+                                      <div class="text-danger">{{ $message }}</div>
+                                  @enderror
+                              </div>
+
+                              <div class="form-group">
+                                  <input type="hidden" name="user_id" value="{{$user->id}}">
+                              </div>
+
                               <input type="submit" class="btn btn-primary" value="Обновить">
                           </form>
                       </div>
