@@ -6,8 +6,9 @@ use App\Http\Controllers\Admin\AdminIndexController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Main\IndexController;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,9 +25,9 @@ use Illuminate\Support\Facades\Route;
 Route::group(['namespace' => 'Main'], function(){
     Route::get('/', [IndexController::class, '__invoke']);
 });
-
+// Route::get('/login', [LoginController::class, '__construct' ])->name('login');
 //префикс будет автоматически подставляться в ссылку перед/
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function(){
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(){
     Route::group(['namespace' => 'Main'], function(){
         Route::get('/', [AdminIndexController::class, '__invoke']);
     });
@@ -106,4 +107,4 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function(){
 
 });
 
-// Auth::routes();[LoginController::class, 'login']
+Auth::routes();[LoginController::class, 'login'];
