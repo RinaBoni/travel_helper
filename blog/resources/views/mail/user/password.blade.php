@@ -1,12 +1,11 @@
 <x-mail::message>
-# Introduction
-Ваш пароль: {{ $password }}
-The body of your message.
+# Добропожаловать на Travel Helper
+Ваш пароль:
 
 <x-mail::button :url="''">
-Button Text
+    {{ $password }}
 </x-mail::button>
 
 Thanks,<br>
-{{ config('app.name') }}
+Travel Helper
 </x-mail::message>
