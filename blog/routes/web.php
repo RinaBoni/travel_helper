@@ -43,11 +43,10 @@ Route::group(['namespace' => 'Main'], function(){
 Route::group(['namespace' => 'Main'], function(){
     Route::get('/', [IndexController::class, '__invoke']);
 });
-// Route::get('/login', [LoginController::class, '__construct' ])->name('login');
 //префикс будет автоматически подставляться в ссылку перед/
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(){
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['auth', 'admin', 'verified']], function(){
     Route::group(['namespace' => 'Main'], function(){
-        Route::get('/', [AdminIndexController::class, '__invoke']);
+        Route::get('/', [AdminIndexController::class, '__invoke'])->name('admin.main.index');
     });
 
     Route::group(['namespace' => 'Post', 'prefix' => 'posts'], function(){
