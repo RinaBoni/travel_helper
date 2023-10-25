@@ -57,6 +57,9 @@ Route::group(['namespace' => 'Person', 'prefix' => 'person', 'middleware' => ['a
     });
     Route::group(['namespace' => 'Comment', 'prefix' => 'comment'], function(){
         Route::get('/', [CommentController::class, 'index'])->name('person.comment.index');
+        Route::get('/{comment}/edit', [CommentController::class, 'edit'])->name('person.comment.edit');
+        Route::patch('/{comment}', [CommentController::class, 'update'])->name('person.comment.update');
+        Route::delete('/{comment}', [CommentController::class, 'delete'])->name('person.comment.delete');
     });
 });
 
