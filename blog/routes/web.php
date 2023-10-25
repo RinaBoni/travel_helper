@@ -49,13 +49,14 @@ Route::group(['namespace' => 'Main'], function(){
 
 Route::group(['namespace' => 'Person', 'prefix' => 'person', 'middleware' => ['auth', 'verified']], function(){
     Route::group(['namespace' => 'Main'], function(){
-        Route::get('/', [PersonIndexController::class, '__invoke'])->name('person.main.index');
+        Route::get('/', [PersonIndexController::class, 'index'])->name('person.main.index');
     });
     Route::group(['namespace' => 'Liked', 'prefix' => 'liked'], function(){
-        Route::get('/', [LikedController::class, '__invoke'])->name('person.liked.index');
+        Route::get('/', [LikedController::class, 'index'])->name('person.liked.index');
+        Route::delete('/{post}', [LikedController::class, 'delete'])->name('person.liked.delete');
     });
     Route::group(['namespace' => 'Comment', 'prefix' => 'comment'], function(){
-        Route::get('/', [CommentController::class, '__invoke'])->name('person.comment.index');
+        Route::get('/', [CommentController::class, 'index'])->name('person.comment.index');
     });
 });
 

@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 class CommentController extends Controller
 {
     //этот метод позволяет при обращении к контроллера автоматически будет использоваться этот метод
-    public function __invoke()
+    public function index()
     {
         return view('person.comment.index');
     }
