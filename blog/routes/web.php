@@ -10,6 +10,9 @@ use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Main\IndexController;
+use App\Http\Controllers\Person\CommentController;
+use App\Http\Controllers\Person\LikedController;
+use App\Http\Controllers\Person\PersonIndexController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -43,6 +46,21 @@ Route::group(['namespace' => 'Main'], function(){
 Route::group(['namespace' => 'Main'], function(){
     Route::get('/', [IndexController::class, '__invoke']);
 });
+
+Route::group(['namespace' => 'Person', 'prefix' => 'person', 'middleware' => ['auth', 'verified']], function(){
+    Route::group(['namespace' => 'Main'], function(){
+        Route::get('/', [PersonIndexController::class, '__invoke'])->name('person.main.index');
+    });
+    Route::group(['namespace' => 'Liked', 'prefix' => 'liked'], function(){
+        Route::get('/', [LikedController::class, '__invoke'])->name('person.liked.index');
+    });
+    Route::group(['namespace' => 'Comment', 'prefix' => 'comment'], function(){
+        Route::get('/', [CommentController::class, '__invoke'])->name('person.comment.index');
+    });
+});
+
+
+
 //префикс будет автоматически подставляться в ссылку перед/
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['auth', 'admin', 'verified']], function(){
     Route::group(['namespace' => 'Main'], function(){
