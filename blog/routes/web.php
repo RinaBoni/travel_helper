@@ -30,31 +30,50 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
+
 Auth::routes(['verification.verify' => true]);
+
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+
 Route::group(['namespace' => 'Main'], function(){
     Route::get('/', [IndexController::class, '__invoke']);
 });
+
+
+
 Route::group(['namespace' => 'Main'], function(){
     Route::get('/', [IndexController::class, '__invoke']);
 });
+
+
 
 Route::group(['namespace' => 'Person', 'prefix' => 'person', 'middleware' => ['auth', 'verified']], function(){
     Route::group(['namespace' => 'Main'], function(){
         Route::get('/', [PersonIndexController::class, 'index'])->name('person.main.index');
     });
+
+
     Route::group(['namespace' => 'Liked', 'prefix' => 'liked'], function(){
         Route::get('/', [LikedController::class, 'index'])->name('person.liked.index');
         Route::delete('/{post}', [LikedController::class, 'delete'])->name('person.liked.delete');
     });
+
+
     Route::group(['namespace' => 'Comment', 'prefix' => 'comment'], function(){
         Route::get('/', [CommentController::class, 'index'])->name('person.comment.index');
         Route::get('/{comment}/edit', [CommentController::class, 'edit'])->name('person.comment.edit');

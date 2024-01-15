@@ -51,7 +51,7 @@
 
                                                   <td class="text-center">
                                                       <form action="{{ route('person.comment.delete', $comment->id) }}",
-                                                          method="comment">
+                                                          method="POST">
                                                           @csrf
                                                           @method('DELETE')
                                                           <button type="submit" class="border-0 bg-transparent">
