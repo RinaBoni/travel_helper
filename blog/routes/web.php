@@ -51,14 +51,14 @@ Route::middleware('auth')->group(function () {
 
 
 Route::group(['namespace' => 'Main'], function(){
-    Route::get('/', [IndexController::class, '__invoke']);
+    Route::get('/', [IndexController::class, 'index'])->name('main.index');
 });
 
 
 
-Route::group(['namespace' => 'Main'], function(){
-    Route::get('/', [IndexController::class, '__invoke']);
-});
+// Route::group(['namespace' => 'Main'], function(){
+//     Route::get('/', [IndexController::class, '__invoke']);
+// });
 
 
 

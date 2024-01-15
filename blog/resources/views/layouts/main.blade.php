@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Edica :: Home</title>
+    <title>ZabTravel Главная</title>
     <link rel="stylesheet" href="{{ asset('assets/vendors/flag-icon-css/css/flag-icon.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendors/font-awesome/css/all.min.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/vendors/aos/aos.css')}}">
@@ -45,14 +45,6 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="contact.html">Contact</a>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav mt-2 mt-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><span class="flag-icon flag-icon-squared rounded-circle flag-icon-gb"></span> Eng</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Download</a>
                         </li>
                     </ul>
                 </div>
