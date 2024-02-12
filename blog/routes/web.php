@@ -13,6 +13,7 @@ use App\Http\Controllers\Main\IndexController;
 use App\Http\Controllers\Person\CommentController;
 use App\Http\Controllers\Person\LikedController;
 use App\Http\Controllers\Person\PersonIndexController;
+use App\Http\Controllers\Post\PostPageIndexController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -56,9 +57,11 @@ Route::group(['namespace' => 'Main'], function(){
 
 
 
-// Route::group(['namespace' => 'Main'], function(){
-//     Route::get('/', [IndexController::class, '__invoke']);
-// });
+Route::group(['namespace' => 'Post', 'prefix' => 'posts'], function(){
+    Route::get('/', [PostPageIndexController::class, 'index'])->name('post.index');
+    Route::get('/{post}', [PostPageIndexController::class, 'show'])->name('post.show');
+
+});
 
 
 
