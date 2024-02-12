@@ -7,7 +7,7 @@ use App\Models\Post;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-class PostPageIndexController extends Controller
+class PostPageController extends Controller
 {
     //этот метод позволяет при обращении к контроллера автоматически будет использоваться этот метод
     public function index()

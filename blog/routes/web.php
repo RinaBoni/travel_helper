@@ -12,8 +12,9 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Main\IndexController;
 use App\Http\Controllers\Person\CommentController;
 use App\Http\Controllers\Person\LikedController;
-use App\Http\Controllers\Person\PersonIndexController;
-use App\Http\Controllers\Post\PostPageIndexController;
+use App\Http\Controllers\Person\PersonController;
+use App\Http\Controllers\Post\Comment\StoreController;
+use App\Http\Controllers\Post\PostPageController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -58,16 +59,19 @@ Route::group(['namespace' => 'Main'], function(){
 
 
 Route::group(['namespace' => 'Post', 'prefix' => 'posts'], function(){
-    Route::get('/', [PostPageIndexController::class, 'index'])->name('post.index');
-    Route::get('/{post}', [PostPageIndexController::class, 'show'])->name('post.show');
+    Route::get('/', [PostPageController::class, 'index'])->name('post.index');
+    Route::get('/{post}', [PostPageController::class, 'show'])->name('post.show');
 
+    Route::group(['namespace' => 'Comment', 'prefix' => '{post}/comments'], function(){
+        Route::post('/',[StoreController::class, 'index'])->name('post.comment.store');
+    });
 });
 
 
 
 Route::group(['namespace' => 'Person', 'prefix' => 'person', 'middleware' => ['auth', 'verified']], function(){
     Route::group(['namespace' => 'Main'], function(){
-        Route::get('/', [PersonIndexController::class, 'index'])->name('person.main.index');
+        Route::get('/', [PersonController::class, 'index'])->name('person.main.index');
     });
 
 
