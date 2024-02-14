@@ -29,21 +29,22 @@
                             @endforeach
                         </div>
                     </section>
-                    <section class="comment-list">
+                    <section class="comment-list mb-5">
+                        <h2 class="section-title mb-5" data-aos="fade-up">Комментарий ({{ $post->comments->count() }})</h2>
                         @foreach ($post->comments as $comment)
-                            <div class="comment-text">
+                            <div class="comment-text mb-3">
                                 <span class="username">
                                     <div>
                                         {{ $comment->user->name }}
                                     </div>
-                                    <span class="text-muted float-right">8:03 PM Today</span>
+                                    <span class="text-muted float-right">{{ $comment->dateAsCarbon->diffForHumans() }}</span>
                                 </span><!-- /.username -->
-                                It is a long established fact that a reader will be distracted
-                                by the readable content of a page when looking at its layout.
+                                {{ $comment->message }}
                             </div>
                         @endforeach
 
                     </section>
+                    @auth()
                     <section class="comment-section">
                         <h2 class="section-title mb-5" data-aos="fade-up">Оставить комментарий</h2>
                         <form action="{{ route('post.comment.store', $post->id) }}" method="post">
@@ -61,6 +62,7 @@
                             </div>
                         </form>
                     </section>
+                    @endauth
                 </div>
             </div>
         </div>
