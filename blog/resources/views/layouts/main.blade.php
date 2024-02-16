@@ -26,6 +26,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('main.index') }}">Блог</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('category.index') }}">Категории</a>
+                        </li>
                         @auth
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('person.main.index') }}">Личный кабинет</a>
@@ -49,7 +52,8 @@
     @yield('content')
 
 
-    <footer class="edica-footer" data-aos="fade-up">
+    {{-- <footer class="edica-footer" data-aos="fade-up"> --}}
+    <footer class="edica-footer">
         <div class="container">
             <div class="row footer-widget-area">
                 <div class="col-md-3">

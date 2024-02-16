@@ -3,7 +3,7 @@
 @section('content')
 <main class="blog">
         <div class="container">
-            <h1 class="edica-page-title" data-aos="fade-up">Blog</h1>
+            <h1 class="edica-page-title" data-aos="fade-up">Блог</h1>
             <section class="featured-posts-section">
                 <div class="row">
                     @foreach ($posts as $post)

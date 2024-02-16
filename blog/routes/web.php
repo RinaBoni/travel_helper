@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Category\IndexController as CategoryIndexController;
 use App\Http\Controllers\Main\IndexController;
 use App\Http\Controllers\Person\CommentController;
 use App\Http\Controllers\Person\LikedController;
@@ -63,10 +64,21 @@ Route::group(['namespace' => 'Post', 'prefix' => 'posts'], function(){
     Route::get('/{post}', [PostPageController::class, 'show'])->name('post.show');
 
     Route::group(['namespace' => 'Comment', 'prefix' => '{post}/comments'], function(){
-        Route::post('/',[StoreController::class, 'index'])->name('post.comment.store');
+        Route::post('/',[StoreController::class, 'comment'])->name('post.comment.store');
+    });
+
+    Route::group(['namespace' => 'Like', 'prefix' => '{post}/likes'], function(){
+        Route::post('/',[StoreController::class, 'like'])->name('post.like.store');
     });
 });
 
+Route::group(['namespace' => 'Category', 'prefix' => 'categories'], function(){
+    Route::get('/', [CategoryIndexController::class, 'index'])->name('category.index');
+
+    Route::group(['namespace' => 'Post', 'prefix' => '{category}/posts'], function(){
+        Route::get('/',[CategoryIndexController::class, 'post'])->name('category.post.index');
+    });
+});
 
 
 Route::group(['namespace' => 'Person', 'prefix' => 'person', 'middleware' => ['auth', 'verified']], function(){

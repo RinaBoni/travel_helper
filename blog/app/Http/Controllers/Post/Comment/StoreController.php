@@ -10,7 +10,7 @@ use App\Models\Post;
 class StoreController extends Controller
 {
     //этот метод позволяет при обращении к контроллера автоматически будет использоваться этот метод
-    public function index(Post $post, StoreRequest $request)
+    public function comment(Post $post, StoreRequest $request)
     {
         $data =$request->validated();
         $data['user_id'] = auth()->user()->id;
@@ -19,6 +19,12 @@ class StoreController extends Controller
         Comment::create($data);
 
         return redirect()->route('post.show', $post->id);
+    }
+
+    public function like(Post $post)
+    {
+        auth()->user()->likedPosts()->toggle($post->id);
+        return redirect()->back();
     }
 
 }

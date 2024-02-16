@@ -17,20 +17,43 @@
             </section>
             <div class="row">
                 <div class="col-lg-9 mx-auto">
-                    <section class="related-posts">
-                        <h2 class="section-title mb-4" data-aos="fade-up">Схожие посты</h2>
-                        <div class="row">
-                            @foreach ($relatedPosts as $relatedPosts)
-                                <div class="col-md-4" data-aos="fade-right" data-aos-delay="100">
-                                    <img src="{{ asset('storage/' . $relatedPosts->preview_image) }}" alt="related post" class="post-thumbnail">
-                                    <p class="post-category">{{ $relatedPosts->category->title }}</p>
-                                    <a href="{{ route('post.show', $relatedPosts->id) }}"><h5 class="post-title">{{ $relatedPosts->title }}</h5></a>
-                                </div>
-                            @endforeach
-                        </div>
+                    <section class="py-3">
+                        @auth
+                            <form action="{{ route('post.like.store', $post->id) }}" method="post">
+                                @csrf
+                                <span>{{ $post->liked_users_count }}</span>
+                                <button type="submit" class="border-0 bg-transparent">
+                                        @if (auth()->user()->likedPosts->contains($post->id))
+                                            <i class="fa-solid fa-heart" style="color: #63E6BE;"></i>
+                                        @else
+                                            <i class="fa-regular fa-heart" style="color: #B197FC;"></i>
+                                        @endif
+                                    </button>
+                            </form>
+                        @endauth
+                        @guest
+                            <div>
+                                <span>{{ $post->liked_users_count }}</span>
+                                <i class="fa-regular fa-heart" style="color: #B197FC;"></i>
+                            </div>
+                        @endguest
                     </section>
+                    @if ($relatedPosts->count() > 0 )
+                        <section class="related-posts">
+                            <h2 class="section-title mb-4" data-aos="fade-up">Схожие посты</h2>
+                            <div class="row">
+                                @foreach ($relatedPosts as $relatedPosts)
+                                    <div class="col-md-4" data-aos="fade-right" data-aos-delay="100">
+                                        <img src="{{ asset('storage/' . $relatedPosts->preview_image) }}" alt="related post" class="post-thumbnail">
+                                        <p class="post-category">{{ $relatedPosts->category->title }}</p>
+                                        <a href="{{ route('post.show', $relatedPosts->id) }}"><h5 class="post-title">{{ $relatedPosts->title }}</h5></a>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </section>
+                    @endif
                     <section class="comment-list mb-5">
-                        <h2 class="section-title mb-5" data-aos="fade-up">Комментарий ({{ $post->comments->count() }})</h2>
+                        <h2 class="section-title mb-5" data-aos="fade-up">Комментарии ({{ $post->comments->count() }})</h2>
                         @foreach ($post->comments as $comment)
                             <div class="comment-text mb-3">
                                 <span class="username">

@@ -9,9 +9,32 @@
                     @foreach ($posts as $post)
                         <div class="col-md-4 fetured-post blog-post" data-aos="fade-up">
                             <div class="blog-post-thumbnail-wrapper">
-                                <img src="{{ 'storage/' . $post->preview_image}}" alt="blog post">
+                                <a href="{{ route('post.show', $post->id) }}" class="blog-post-permalink">
+                                    <img src="{{ 'storage/' . $post->preview_image}}" alt="blog post">
+                                </a>
                             </div>
-                            <p class="blog-post-category">{{ $post->category->title }}</p>
+                            <div class="d-flex justify-content-between">
+                                <p class="blog-post-category">{{ $post->category->title }}</p>
+                                @auth
+                                    <form action="{{ route('post.like.store', $post->id) }}" method="post">
+                                        @csrf
+                                        <span>{{ $post->liked_users_count }}</span>
+                                        <button type="submit" class="border-0 bg-transparent">
+                                                @if (auth()->user()->likedPosts->contains($post->id))
+                                                    <i class="fa-solid fa-heart" style="color: #63E6BE;"></i>
+                                                @else
+                                                    <i class="fa-regular fa-heart" style="color: #B197FC;"></i>
+                                                @endif
+                                            </button>
+                                    </form>
+                                @endauth
+                                @guest
+                                    <div>
+                                        <span>{{ $post->liked_users_count }}</span>
+                                        <i class="fa-regular fa-heart" style="color: #B197FC;"></i>
+                                    </div>
+                                @endguest
+                            </div>
                             <a href="{{ route('post.show', $post->id) }}" class="blog-post-permalink">
                                 <h6 class="blog-post-title">{{ $post->title }}</h6>
                             </a>
@@ -31,9 +54,32 @@
                             @foreach ($randomPosts as $post)
                                 <div class="col-md-6 blog-post" data-aos="fade-up">
                                     <div class="blog-post-thumbnail-wrapper">
-                                        <img src="{{ 'storage/' . $post->preview_image}}" alt="blog post">
+                                        <a href="{{ route('post.show', $post->id) }}" class="blog-post-permalink">
+                                            <img src="{{ 'storage/' . $post->preview_image}}" alt="blog post">
+                                        </a>
                                     </div>
-                                    <p class="blog-post-category">{{ $post->category->title }}</p>
+                                    <div class="d-flex justify-content-between">
+                                        <p class="blog-post-category">{{ $post->category->title }}</p>
+                                        @auth
+                                            <form action="{{ route('post.like.store', $post->id) }}" method="post">
+                                                @csrf
+                                                <span>{{ $post->liked_users_count }}</span>
+                                                <button type="submit" class="border-0 bg-transparent">
+                                                        @if (auth()->user()->likedPosts->contains($post->id))
+                                                            <i class="fa-solid fa-heart" style="color: #63E6BE;"></i>
+                                                        @else
+                                                            <i class="fa-regular fa-heart" style="color: #B197FC;"></i>
+                                                        @endif
+                                                    </button>
+                                            </form>
+                                        @endauth
+                                        @guest
+                                            <div>
+                                                <span>{{ $post->liked_users_count }}</span>
+                                                <i class="fa-regular fa-heart" style="color: #B197FC;"></i>
+                                            </div>
+                                        @endguest
+                                    </div>
                                     <a href="{{ route('post.show', $post->id) }}" class="blog-post-permalink">
                                         <h6 class="blog-post-title">{{ $post->title }}</h6>
                                     </a>
