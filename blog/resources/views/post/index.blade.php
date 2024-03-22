@@ -21,9 +21,9 @@
                                         <span>{{ $post->liked_users_count }}</span>
                                         <button type="submit" class="border-0 bg-transparent">
                                                 @if (auth()->user()->likedPosts->contains($post->id))
-                                                    <i class="fa-solid fa-heart" style="color: #63E6BE;"></i>
+                                                    <i class="fa fa-solid fa-heart" style="color: #63E6BE;"></i>
                                                 @else
-                                                    <i class="fa-regular fa-heart" style="color: #B197FC;"></i>
+                                                    <i class="fa fa-regular fa-heart" style="color: #B197FC;"></i>
                                                 @endif
                                             </button>
                                     </form>
@@ -31,7 +31,7 @@
                                 @guest
                                     <div>
                                         <span>{{ $post->liked_users_count }}</span>
-                                        <i class="fa-regular fa-heart" style="color: #B197FC;"></i>
+                                        <i class="fa fa-regular fa-heart" style="color: #B197FC;"></i>
                                     </div>
                                 @endguest
                             </div>
