@@ -7,13 +7,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0"> Понравившиеся посты</h1>
+                    <h1 class="m-0"> Избранное</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         {{-- <li class="breadcrumb-item"><a href="#"></a></li> --}}
                         <li class="breadcrumb-item"><a href="{{ route('person.main.index') }}">Главная</a></li>
-                        <li class="breadcrumb-item active"> Понравившиеся посты</li>
+                        <li class="breadcrumb-item active"> Избранное</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -33,7 +33,6 @@
                             <table class="table table-hover text-nowrap">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
                                         <th>Название</th>
                                         <th colspan="2" class="text-center">Действие</th>
                                     </tr>
@@ -41,12 +40,11 @@
                                 <tbody>
                                     @foreach ($posts as $post)
                                         <tr>
-                                            <td>{{ $post->id }}</td>
 
                                             <td>{{ $post->title }}</td>
 
                                             <td class="text-center"><a
-                                                    href="{{ route('admin.post.show', $post->id) }}"><i
+                                                    href="{{ route('post.show', $post->id) }}"><i
                                                         class="fa-solid fa-eye" style="color: #1b3f7e;"></i></a></td>
 
                                             <td class="text-center">
