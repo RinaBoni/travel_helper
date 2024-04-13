@@ -12,9 +12,9 @@
 
               <li class="nav-item">
                   <a href="{{ route('person.main.index') }}" class="nav-link">
-                      <i class="fa-solid fa-house"></i>
+                    <i class="nav-icon fa-regular fa-user"></i>
                       <p>
-                          Главная
+                        Личный кабинет
                       </p>
                   </a>
               </li>
@@ -32,6 +32,13 @@
                       <p>Комментарии</p>
                   </a>
               </li>
+
+              <li class="nav-item">
+                <a href="{{ route('post.index') }}" class="nav-link">
+                  <i class="nav-icon fa-solid fa-house"></i>
+                    <p>Вернуться на главную</p>
+                </a>
+            </li>
 
 
           </ul>

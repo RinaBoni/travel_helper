@@ -33,9 +33,15 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('person.main.index') }}">Личный кабинет</a>
                             </li>
+                            {{-- @if ($role == 'admin')
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('admin.main.index') }}">Админка</a>
+                                </li>
+                            @endif --}}
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('person.main.index') }}">Выйти</a>
                             </li>
+
                         @endauth
                         @guest
                             <li class="nav-item">

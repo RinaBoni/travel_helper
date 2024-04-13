@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Post;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,12 @@ class PostPageController extends Controller
         $posts = Post::paginate(6);
         $randomPosts = Post::get()->random(4);
         $likedPosts = Post::withCount('likedUsers')->orderBy('liked_users_count', 'DESC')->get()->take(4);
-        return view('post.index', compact('posts', 'randomPosts', 'likedPosts'));
+        $role = 'person';
+        // if ((int)auth()->user()->role == User::ROLE_ADMIN){
+        //     $role = 'admin';
+        // }
+
+        return view('post.index', compact('posts', 'randomPosts', 'likedPosts', 'role'));
     }
 
     public function show(Post $post){

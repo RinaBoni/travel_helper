@@ -51,6 +51,22 @@
                   </a>
               </li>
 
+              <li class="nav-item">
+                <a href="{{ route('post.index') }}" class="nav-link">
+                  <i class="nav-icon fa-solid fa-house"></i>
+                    <p>Вернуться на главную</p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="{{ route('person.main.index') }}" class="nav-link">
+                  <i class="nav-icon fa-regular fa-user"></i>
+                    <p>
+                      Личный кабинет
+                    </p>
+                </a>
+            </li>
+
 
           </ul>
       </div>

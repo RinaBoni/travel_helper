@@ -12,7 +12,7 @@
                       <div class="col-sm-6">
                           <ol class="breadcrumb float-sm-right">
                               {{-- <li class="breadcrumb-item"><a href="#"></a></li> --}}
-                              <li class="breadcrumb-item"><a href="{{ route('person.main.index') }}">Главная</a></li>
+                              <li class="breadcrumb-item"><a href="{{ route('person.main.index') }}">Личный кабинет</a></li>
                               <li class="breadcrumb-item active">Комментарии</li>
                           </ol>
                       </div><!-- /.col -->

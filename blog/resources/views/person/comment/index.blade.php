@@ -12,7 +12,7 @@
                       <div class="col-sm-6">
                           <ol class="breadcrumb float-sm-right">
                               {{-- <li class="breadcrumb-item"><a href="#"></a></li> --}}
-                              <li class="breadcrumb-item"><a href="{{ route('person.main.index') }}">Главная</a></li>
+                              <li class="breadcrumb-item"><a href="{{ route('person.main.index') }}">Личный кабинет</a></li>
                               <li class="breadcrumb-item active">Комментарии</li>
                           </ol>
                       </div><!-- /.col -->
@@ -33,7 +33,6 @@
                                   <table class="table table-hover text-nowrap">
                                       <thead>
                                           <tr>
-                                              <th>ID</th>
                                               <th>Название</th>
                                               <th colspan="2" class="text-center">Действие</th>
                                           </tr>
@@ -41,7 +40,6 @@
                                       <tbody>
                                           @foreach ($comments as $comment)
                                               <tr>
-                                                  <td>{{ $comment->id }}</td>
 
                                                   <td>{{ $comment->message }}</td>
 

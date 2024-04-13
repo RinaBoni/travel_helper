@@ -8,12 +8,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Главная</h1>
+                    <h1 class="m-0">Личный кабинет</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         {{-- <li class="breadcrumb-item"><a href="#"></a></li> --}}
-                        <li class="breadcrumb-item active">Главная</li>
+                        <li class="breadcrumb-item active">Личный кабинет</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -35,7 +35,7 @@
                         <div class="icon">
                             <i class="fa-regular fa-heart"></i>
                         </div>
-                        <a href="{{ route('admin.user.index') }}" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('person.liked.index') }}" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -50,7 +50,7 @@
                         <div class="icon">
                             <i class="fa-regular fa-comment"></i>
                         </div>
-                        <a href="{{ route('admin.post.index') }}" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('person.comment.index') }}" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
