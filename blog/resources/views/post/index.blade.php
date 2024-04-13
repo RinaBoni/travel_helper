@@ -3,7 +3,7 @@
 @section('content')
 <main class="blog">
         <div class="container">
-            <h1 class="edica-page-title" data-aos="fade-up">Blog</h1>
+            <h1 class="edica-page-title" data-aos="fade-up">Достопримечательности Забайкальского края</h1>
             <section class="featured-posts-section">
                 <div class="row">
                     @foreach ($posts as $post)
@@ -66,9 +66,9 @@
                                                 <span>{{ $post->liked_users_count }}</span>
                                                 <button type="submit" class="border-0 bg-transparent">
                                                         @if (auth()->user()->likedPosts->contains($post->id))
-                                                            <i class="fa-solid fa-heart" style="color: #63E6BE;"></i>
+                                                            <i class="fa fa-solid fa-heart" style="color: #63E6BE;"></i>
                                                         @else
-                                                            <i class="fa-regular fa-heart" style="color: #B197FC;"></i>
+                                                            <i class="fa fa-regular fa-heart" style="color: #B197FC;"></i>
                                                         @endif
                                                     </button>
                                             </form>

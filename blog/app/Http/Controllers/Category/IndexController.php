@@ -20,6 +20,7 @@ class IndexController extends Controller
     public function post(Category $category)
     {
         $posts = $category->posts()->paginate(6);
-        return view('category.post.index', compact('posts'));
+        $categories = $category;
+        return view('category.post.index', compact('posts', 'categories'));
     }
 }
