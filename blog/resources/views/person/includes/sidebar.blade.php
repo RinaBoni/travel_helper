@@ -22,7 +22,7 @@
               <li class="nav-item">
                   <a href="{{ route('person.liked.index') }}" class="nav-link">
                     <i class="nav-icon fa-regular fa-heart"></i>
-                      <p>Понравившиеся посты</p>
+                      <p>Избранное</p>
                   </a>
               </li>
 

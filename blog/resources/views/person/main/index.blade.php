@@ -29,8 +29,8 @@
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3>10</h3>
-                            <p>Понравившиеся посты</p>
+                            <h3>{{ $data['likedCount'] }}</h3>
+                            <p>Избранное</p>
                         </div>
                         <div class="icon">
                             <i class="fa-regular fa-heart"></i>
@@ -43,7 +43,8 @@
                     <!-- small box -->
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3>10<sup style="font-size: 20px"></sup></h3>
+
+                            <h3>{{ $data['commentedCount'] }}</h3>
                             <p>Комментарии</p>
                         </div>
                         <div class="icon">
