@@ -8,7 +8,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Личный кабинет</h1>
+                    <h1 class="m-0">{{$name}}</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -54,9 +54,24 @@
                     </div>
                 </div>
                 <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3>{{$name}}</h3>
+
+                            <p>Аккаунт</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-regular fa-user"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
             </div>
             <!-- /.row -->
         </div><!-- /.container-fluid -->
+
     </section>
     <!-- /.content -->
 </div>

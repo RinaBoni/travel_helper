@@ -18,12 +18,11 @@ class PersonController extends Controller
     {
         $data = [];
         $data['likedCount'] = auth()->user()->likedPosts()->count();
-        // dd($data);
-        // $data['commentedCount'] = Comment::all()->count();
         $data['commentedCount'] = auth()->user()->comments->count();
-        // $comments = auth()->user()->comments->count();
-        // dd($data);
 
-        return view('person.main.index', compact('data'));
+
+        $name = auth()->user()->name;
+
+        return view('person.main.index', compact('data', 'name'));
     }
 }
