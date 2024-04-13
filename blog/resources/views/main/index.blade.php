@@ -3,7 +3,7 @@
 @section('content')
 <main class="blog">
         <div class="container">
-            <h1 class="edica-page-title" data-aos="fade-up">Блог</h1>
+            <h1 class="edica-page-title" >Достопримечательности Забайкальского края</h1>
             <section class="featured-posts-section">
                 <div class="row">
                     @foreach ($posts as $post)
@@ -11,7 +11,7 @@
                             <div class="blog-post-thumbnail-wrapper">
                                 <img src="{{ 'storage/' . $post->preview_image}}" alt="blog post">
                             </div>
-                            <p class="blog-post-category">{{ $post->category->title }}</p>
+                            <p class="blog-post-category">{{ $post->category->title }} рп</p>
                             <a href="#!" class="blog-post-permalink">
                                 <h6 class="blog-post-title">{{ $post->title }}</h6>
                             </a>
