@@ -46,4 +46,4 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
- @endsection
+@endsection
