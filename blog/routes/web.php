@@ -13,6 +13,7 @@ use App\Http\Controllers\Category\IndexController as CategoryIndexController;
 use App\Http\Controllers\Main\IndexController;
 use App\Http\Controllers\Person\CommentController;
 use App\Http\Controllers\Person\LikedController;
+use App\Http\Controllers\Person\PersonalController;
 use App\Http\Controllers\Person\PersonController;
 use App\Http\Controllers\Post\Comment\StoreController;
 use App\Http\Controllers\Post\PostPageController;
@@ -98,6 +99,13 @@ Route::group(['namespace' => 'Person', 'prefix' => 'person', 'middleware' => ['a
         Route::get('/{comment}/edit', [CommentController::class, 'edit'])->name('person.comment.edit');
         Route::patch('/{comment}', [CommentController::class, 'update'])->name('person.comment.update');
         Route::delete('/{comment}', [CommentController::class, 'delete'])->name('person.comment.delete');
+    });
+
+    Route::group(['namespace' => 'Personal', 'prefix' => 'personal'], function(){
+        Route::get('/', [PersonalController::class, 'index'])->name('person.personal.index');
+        Route::get('/{personal}/edit', [PersonalController::class, 'edit'])->name('person.personal.edit');
+        Route::patch('/{personal}', [PersonalController::class, 'update'])->name('person.personal.update');
+        Route::delete('/{personal}', [PersonalController::class, 'delete'])->name('person.personal.delete');
     });
 });
 
