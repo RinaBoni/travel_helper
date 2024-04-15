@@ -51,7 +51,7 @@
             <div class="inner">
             <h3>{{ $data['postsCount'] }}<sup style="font-size: 20px"></sup></h3>
 
-            <p>Посты</p>
+            <p>Достопримечательности</p>
             </div>
             <div class="icon">
             <i class="nav-icon fas fa-book"></i>

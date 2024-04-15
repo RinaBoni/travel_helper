@@ -17,9 +17,6 @@ class PostPageController extends Controller
         $randomPosts = Post::get()->random(4);
         $likedPosts = Post::withCount('likedUsers')->orderBy('liked_users_count', 'DESC')->get()->take(4);
         $role = 'person';
-        // if ((int)auth()->user()->role == User::ROLE_ADMIN){
-        //     $role = 'admin';
-        // }
 
         return view('post.index', compact('posts', 'randomPosts', 'likedPosts', 'role'));
     }
