@@ -20,13 +20,13 @@
             </li>
 
             <li class="nav-item">
-            <a href="{{ route('person.personal.index') }}" class="nav-link">
-                <i class="nav-icon fa-solid fa-user-gear"></i>
-                <p>
-                    Личные данные
-                </p>
-            </a>
-        </li>
+                <a href="{{ route('person.personal.index') }}" class="nav-link">
+                    <i class="nav-icon fa-solid fa-user-gear"></i>
+                    <p>
+                        Личные данные
+                    </p>
+                </a>
+            </li>
 
             <li class="nav-item">
                 <a href="{{ route('person.liked.index') }}" class="nav-link">
@@ -43,11 +43,18 @@
             </li>
 
             <li class="nav-item">
-            <a href="{{ route('post.index') }}" class="nav-link">
-                <i class="nav-icon fa-solid fa-house"></i>
-                <p>Вернуться на главную</p>
-            </a>
-        </li>
+                <a href="{{ route('post.index') }}" class="nav-link">
+                    <i class="nav-icon fa-solid fa-house"></i>
+                    <p>Вернуться на главную</p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="{{ route('admin.main.index') }}" class="nav-link">
+                    <i class="nav-icon fa-solid fa-certificate"></i>
+                    <p>Панель администратора</p>
+                </a>
+            </li>
 
 
         </ul>
