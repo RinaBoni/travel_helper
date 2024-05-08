@@ -115,21 +115,7 @@
                                 @enderror
                             </div>
 
-                            <div class="form-group w-50">
-                                <label for="exampleInputFile">Добавить изображения</label>
-                                <div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" multiple class="custom-file-input" name="carusel_image">
-                                        <label class="custom-file-label">Выберете изображения</label>
-                                    </div>
-                                    <div class="input-group-append">
-                                        <span class="input-group-text">Загрузка</span>
-                                    </div>
-                                </div>
-                                @error('main_image')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
+                            
 
                             <div class="form-group">
                                 <input type="submit" class="btn btn-primary" value="Добавить">

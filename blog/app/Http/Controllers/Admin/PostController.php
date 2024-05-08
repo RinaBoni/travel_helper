@@ -48,8 +48,10 @@ class PostController extends BasePostController
 
     public function store(StoreRequest $request)
     {
+        
         //обрабатываем запрос
         $data = $request->validated();
+
         //взаимодействие с базой
         $this->service->store($data);
         return redirect()->route('admin.post.index');
