@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="{{ asset('plugins/jqvmap/jqvmap.min.css') }} ">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }} ">
+    <!-- ЗАГРУЗИТЬ МНОГО ФОТОГРАФИЙ -->
+    <link rel="stylesheet" href="{{ asset('css/pic.css') }} ">
 
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{ asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }} ">
@@ -113,6 +115,8 @@
     <script src="{{ asset('dist/js/demo.js') }} "></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{ asset('dist/js/pages/dashboard.js') }} "></script>
+     <!-- ЗАГРУЗИТЬ МНОГО ФОТОГРАФИЙ -->
+    <!-- <script src="{{ asset('js/pic.js') }} "></script> -->
 
 
 

@@ -5,7 +5,60 @@
         <div class="container">
             <h1 class="edica-page-title" data-aos="fade-up">{{ $post->title }}</h1>{{-- <p class="edica-blog-post-meta" data-aos="fade-up" data-aos-delay="200"> {{ $date->translatedFormat('F') }} {{ $date->day }}  {{$date->year}} • {{ $date->format('H:i') }} • {{ $post->comments->count }} Комментария</p> --}}
             <p class="edica-blog-post-meta" data-aos="fade-up" data-aos-delay="200"> {{ $date->translatedFormat('F') }} {{ $date->day }}  {{$date->year}} • {{ $date->format('H:i') }} • {{ $post->comments->count() }} Комментария</p>
+
+
+
+
+
+
+
             <section class="blog-post-featured-img" data-aos="fade-up" data-aos-delay="300">
+                  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class=""></li>
+          <li data-target="#myCarousel" data-slide-to="1" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+        </ol>
+        <div class="carousel-inner">
+
+          <div class="carousel-item">
+            <img class="first-slide" src="https://avatars.mds.yandex.net/i?id=1bee28e3176a1847fb5010f319d96999e55e10df-11035673-images-thumbs&n=13" alt="First slide">
+          </div>
+
+          <div class="carousel-item active">
+            <img class="second-slide" src="https://avatars.mds.yandex.net/i?id=1bee28e3176a1847fb5010f319d96999e55e10df-11035673-images-thumbs&n=13" alt="Second slide">
+          </div>
+
+          <div class="carousel-item">
+            <img class="third-slide" src="https://avatars.mds.yandex.net/i?id=1bee28e3176a1847fb5010f319d96999e55e10df-11035673-images-thumbs&n=13" alt="Third slide">
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+            </section><section class="blog-post-featured-img" data-aos="fade-up" data-aos-delay="300">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 <img src="{{ asset('storage/' . $post->main_image) }}" alt="featured image" class="w-100">
             </section>
             <section class="post-content">

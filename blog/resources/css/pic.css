@@ -1,0 +1,70 @@
+.MultiFile-label {
+    display: inline-flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    font-size: 14px;
+    color: #8F9DA8;
+}
+
+.MultiFile-label:not(:last-child){
+    margin-right: 23px;
+}
+.submit-request-form input[type="file"] {
+    height: 26px;
+    margin-bottom: 15px;
+    position: absolute;
+    top: -3000px;
+}
+.MultiFile-title {
+    margin-right: 7px;
+}
+.MultiFile-list {
+    display: flex;
+}
+
+.MultiFile-remove {
+    display: block;
+    width: 9px;
+    height: 9px;
+    position: relative;
+}
+.MultiFile-remove:before,
+.MultiFile-remove:after {
+    content: '';
+    width: 10px;
+    height: 1px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: #000000;
+}
+.MultiFile-remove:before {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+.MultiFile-remove:after {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+.control-group.tal {
+    text-align: left;
+}
+.upload_files_button {
+    display: inline-flex;
+    cursor: pointer;
+    align-items: center;
+    color: #861519;
+    text-decoration: underline;
+    text-decoration-color: #861519;
+    text-underline-offset: 2px;
+    margin-bottom: 10px;
+}
+.upload_files_button:hover {
+    text-decoration: none;
+}
+.upload_files_button:before {
+    content: '';
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    margin-right: 13px;
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAWCAYAAAArdgcFAAAACXBIWXMAAAsSAAALEgHS3X78AAABdElEQVQ4jaWUMVLDMBBFfzL0oSEzpElugG+AuQFHcG7gVhXQkDY3ILlBOAFwAswNQqNCVTiBmZ/58gjjxNL4V7J292m9u9KormvEajWdZQDWACrjbNkXdpEIfgcwAXCIiYmCt8BfAArtF1rfAviWT2mcPR7eW5YOcC7TTtC2fuhjnK3Ows+AuXej9RbABsBC/ZjoL7KTZYkEL42zmyCmkn3Oco0jwPzN+z4wxVKoXFT2D94BzjUdZ8Fd+lPzE+B9LFjxn96vgaeANYIvAD6Ms7niLwNfxi/GA8Dwl6kDzFE8jJ6vrmmo1OEUcNcENTPOTWZehmAZBoM9vNB6TYMgg8EePg8coZt21BAwWg+XN+6D0QrfhiSwz9wr99lyxFp+yWAPf9X6MSgHQUsAT6p7lgqmOIoEvel7a5wt2k66B5sUMPz1X01nzPohKAG/mSWby0eL49pcsBhwA1d24QFdSgJTTUONs4TfBT3w4sPP2i9SwADwC+8a/YQl5EfEAAAAAElFTkSuQmCC");
+}

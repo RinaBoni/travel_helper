@@ -16,8 +16,8 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
-    const ROLE_ADMIN = 0;
-    const ROLE_READER = 1;
+    const ROLE_ADMIN = 1;
+    const ROLE_READER = 0;
 
     //так называемый мапинг, объясняем что значат 0 и 1
     public static function getRoles(){
