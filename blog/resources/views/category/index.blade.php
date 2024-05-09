@@ -17,6 +17,14 @@
             </section>
         </div>
 
+        <section class="edica-footer-banner-section">
+        <div class="container">
+            <div class="footer-banner" data-aos="fade-up">
+               
+            </div>
+        </div>
+    </section>
+
     </main>
 
 @endsection

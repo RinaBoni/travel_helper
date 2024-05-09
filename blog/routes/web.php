@@ -17,6 +17,7 @@ use App\Http\Controllers\Person\PersonalController;
 use App\Http\Controllers\Person\PersonController;
 use App\Http\Controllers\Post\Comment\StoreController;
 use App\Http\Controllers\Post\PostPageController;
+use App\Http\Controllers\GroupController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -79,6 +80,12 @@ Route::group(['namespace' => 'Category', 'prefix' => 'categories'], function(){
     Route::group(['namespace' => 'Post', 'prefix' => '{category}/posts'], function(){
         Route::get('/',[CategoryIndexController::class, 'post'])->name('category.post.index');
     });
+});
+
+Route::group(['namespace' => 'Group', 'prefix' => 'group'], function(){
+    Route::get('/', [GroupController::class, 'create'])->name('group.create');
+
+   
 });
 
 
