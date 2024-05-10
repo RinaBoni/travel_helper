@@ -13,33 +13,33 @@
 
 
             <section class="blog-post-featured-img" data-aos="fade-up" data-aos-delay="300">
-                  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
-                          <li data-target="#myCarousel" data-slide-to="0" class=""></li>
-                          <li data-target="#myCarousel" data-slide-to="1" class="active"></li>
-                          <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+                        <li data-target="#myCarousel" data-slide-to="0" class=""></li>
+                        <li data-target="#myCarousel" data-slide-to="1" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="2" class=""></li>
                         </ol>
                         <div class="carousel-inner">
 
-                          <div class="carousel-item">
+                        <div class="carousel-item">
                             <img class="first-slide" src="https://avatars.mds.yandex.net/i?id=1bee28e3176a1847fb5010f319d96999e55e10df-11035673-images-thumbs&n=13" alt="First slide">
-                          </div>
+                        </div>
 
-                          <div class="carousel-item active">
+                        <div class="carousel-item active">
                             <img class="second-slide" src="https://avatars.mds.yandex.net/i?id=1bee28e3176a1847fb5010f319d96999e55e10df-11035673-images-thumbs&n=13" alt="Second slide">
-                          </div>
+                        </div>
 
-                          <div class="carousel-item">
+                        <div class="carousel-item">
                             <img class="third-slide" src="https://avatars.mds.yandex.net/i?id=1bee28e3176a1847fb5010f319d96999e55e10df-11035673-images-thumbs&n=13" alt="Third slide">
-                          </div>
+                        </div>
                         </div>
                         <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                          <span class="sr-only">Previous</span>
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
                         </a>
                         <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                          <span class="sr-only">Next</span>
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
                         </a>
                     </div>
             </section>
@@ -97,27 +97,27 @@
                             </div>
                         </section>
                     @endif
-                    
-                    
+
+
 
                     <section class="related-posts">
                             <h2 class="section-title mb-4" data-aos="fade-up">Отправьтесь в поход!</h2>
                             <div class="row">
-                               
+
                                     <div class="col-md-4" data-aos="fade-right" data-aos-delay="100">
-                                        <a href=""><h4 class="post-title">Создайте группу</h4></a>
-                                        
+                                        <a href="{{ route('group.create') }}"><h4 class="post-title">Создайте группу</h4></a>
+
                                     </div>
                                     <div class="col-md-4" data-aos="fade-right" data-aos-delay="100">
                                         <a href=""><h4 class="post-title">Присоединитесь к группе</h4></a>
-                                        
+
                                     </div>
-                               
+
                             </div>
                         </section>
 
 
-               
+
                     <section class="comment-list mb-5">
                         <h2 class="section-title mb-5" data-aos="fade-up">Комментарии ({{ $post->comments->count() }})</h2>
                         @foreach ($post->comments as $comment)

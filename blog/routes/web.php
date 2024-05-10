@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Category\IndexController as CategoryIndexController;
+use App\Http\Controllers\Group\GroupController;
 use App\Http\Controllers\Main\IndexController;
 use App\Http\Controllers\Person\CommentController;
 use App\Http\Controllers\Person\LikedController;
@@ -17,7 +18,6 @@ use App\Http\Controllers\Person\PersonalController;
 use App\Http\Controllers\Person\PersonController;
 use App\Http\Controllers\Post\Comment\StoreController;
 use App\Http\Controllers\Post\PostPageController;
-use App\Http\Controllers\GroupController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -37,13 +37,19 @@ Route::get('/', function () {
 
 
 
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
 
+
+
 Auth::routes(['verification.verify' => true]);
+
+
 
 
 
@@ -55,9 +61,13 @@ Route::middleware('auth')->group(function () {
 
 
 
+
+
 Route::group(['namespace' => 'Main'], function(){
     Route::get('/', [IndexController::class, 'index'])->name('main.index');
 });
+
+
 
 
 
@@ -74,6 +84,10 @@ Route::group(['namespace' => 'Post', 'prefix' => 'posts'], function(){
     });
 });
 
+
+
+
+
 Route::group(['namespace' => 'Category', 'prefix' => 'categories'], function(){
     Route::get('/', [CategoryIndexController::class, 'index'])->name('category.index');
 
@@ -82,11 +96,20 @@ Route::group(['namespace' => 'Category', 'prefix' => 'categories'], function(){
     });
 });
 
-Route::group(['namespace' => 'Group', 'prefix' => 'group'], function(){
-    Route::get('/', [GroupController::class, 'create'])->name('group.create');
 
-   
+
+
+
+Route::group(['namespace' => 'Group', 'prefix' => 'group'], function(){
+    Route::get('/create', [GroupController::class, 'create'])->name('group.create');
+    Route::get('/{group}', [GroupController::class, 'show'])->name('group.show');
+    Route::get('/{group}/edit', [GroupController::class, 'edit'])->name('group.edit');
+    Route::delete('/{group}', [GroupController::class, 'delete'])->name('group.delete');
+
 });
+
+
+
 
 
 Route::group(['namespace' => 'Person', 'prefix' => 'person', 'middleware' => ['auth', 'verified']], function(){
@@ -115,6 +138,8 @@ Route::group(['namespace' => 'Person', 'prefix' => 'person', 'middleware' => ['a
         Route::delete('/{personal}', [PersonalController::class, 'delete'])->name('person.personal.delete');
     });
 });
+
+
 
 
 

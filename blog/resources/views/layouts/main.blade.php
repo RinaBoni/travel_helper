@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ asset('assets/vendors/font-awesome/css/all.min.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/vendors/aos/aos.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}">
-    
+
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/carousel/">
 
     <!-- Bootstrap core CSS -->
@@ -35,9 +35,19 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('main.index') }}">Достопримечательности</a>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('category.index') }}">Категории</a>
                         </li>
+
+                        {{-- <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="blogDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Категории</a>
+                            <div class="dropdown-menu" aria-labelledby="blogDropdown">
+                                @foreach ($categories as $category)
+                                    <a class="dropdown-item" href="{{ route('category.post.index', $category->id) }}">{{ $category->title }}</a>
+                                @endforeach
+                            </div>
+                        </li> --}}
                         @auth
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('person.main.index') }}">Личный кабинет</a>
