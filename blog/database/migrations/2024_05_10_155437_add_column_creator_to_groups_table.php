@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('group_users', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('groups', function (Blueprint $table) {
+            $table->string('creator')->nullable();
         });
     }
 
@@ -22,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('group_users');
+        Schema::table('groups', function (Blueprint $table) {
+            $table->dropColumn('creator');
+        });
     }
 };
