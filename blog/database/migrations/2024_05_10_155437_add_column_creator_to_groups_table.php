@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::table('groups', function (Blueprint $table) {
             $table->string('creator')->nullable();
+            $table->index('creator', 'group_user_idx');
+            $table-> foreign('creator', 'group_user_fk')->on('users')->references('id');
+
         });
     }
 
@@ -22,6 +25,13 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('groups', function (Blueprint $table) {
+            // Drop the foreign key first
+            $table->dropForeign('group_user_fk');
+
+            // Drop the index next
+            $table->dropIndex('group_user_idx');
+
+            // Finally, drop the column
             $table->dropColumn('creator');
         });
     }

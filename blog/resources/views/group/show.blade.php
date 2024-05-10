@@ -18,18 +18,23 @@
                     <div class="col-lg-9 mx-auto" data-aos="fade-up">
                         {!! $group->additional_information !!}
                     </div>
-                    <div class="col-lg-9 mx-auto" data-aos="fade-up">
-                        <a href="{{ route('group.edit', $group->id) }}" class="btn btn-warning btn-lg"><i class="fa-solid fa-pen" style="color: #1b3f7e;"></i></a>
-                    </div>
-                    <div class="col-lg-9 mx-auto" data-aos="fade-up">
-                        <form action="{{ route('group.delete', $group->id) }}", method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-warning btn-lg" data-aos="" data-aos-delay="300">
-                                <i class="fa-solid fa-trash-can" style="color: #1b3f7e;"></i>
-                            </button>
-                        </form>
-                    </div>
+
+                    @if ($currentUser == $group->creator)
+
+                        <div class="col-lg-9 mx-auto" data-aos="fade-up">
+                            <a href="{{ route('group.edit', $group->id) }}" class="btn btn-warning btn-lg"><i class="fa-solid fa-pen" style="color: #1b3f7e;"></i></a>
+                        </div>
+                        <div class="col-lg-9 mx-auto" data-aos="fade-up">
+                            <form action="{{ route('group.delete', $group->id) }}", method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-warning btn-lg" data-aos="" data-aos-delay="300">
+                                    <i class="fa-solid fa-trash-can" style="color: #1b3f7e;"></i>
+                                </button>
+                            </form>
+                        </div>
+                    @endif
+
                 </div>
             </section>
 
