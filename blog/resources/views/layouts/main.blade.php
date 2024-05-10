@@ -61,7 +61,11 @@
                                 </li>
                             @endif --}}
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('person.main.index') }}">Выйти</a>
+                                {{-- <a class="nav-link" href="{{ route('person.main.index') }}">Выйти</a> --}}
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button class="nav-link" type="submit">Выйти</button>
+                                </form>
                             </li>
 
                         @endauth
