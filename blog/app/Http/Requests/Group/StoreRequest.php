@@ -22,21 +22,22 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string',
-            'email' => 'required|string|email|unique:users',
-            'role' => 'required|integer'
+            'title' => 'required|string',
+            'departure_date' => 'required|date',
+            'arrival_date' => 'required|date',
+            'post_id' => 'required|integer|exists:posts,id',
+            'additional_information' => 'required|string'
         ];
     }
 
     public function messages()
     {
         return [
-            'name.required' => 'Это поле необходимо заполнить',
-            'email.required' => 'Это поле необходимо заполнить',
-            'name.string' => 'Имя должно быть строкой',
-            'email.string' => 'Почта должно быть строкой',
-            'email.email' => 'Ваша почта должна сообветствовать формату name@mail.ru',
-            'email.unique' => 'Пользователь с такой почтой уже существует',
+            'title.required' => 'Это поле необходимо заполнить',
+            'departure_date.required' => 'Это поле необходимо заполнить',
+            'arrival_date.required' => 'Это поле необходимо заполнить',
+            'post_id.required' => 'Это поле необходимо заполнить',
+            'additional_information.required' => 'Это поле необходимо заполнить',
         ];
     }
 }

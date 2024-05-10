@@ -79,10 +79,10 @@
                             </div>
 
 
-                            
 
 
-                    
+
+
                             <div class="form-group w-50">
                                 <label for="exampleInputFile">Добавить привью</label>
                                 <div class="input-group">
@@ -115,7 +115,7 @@
                                 @enderror
                             </div>
 
-                            
+
 
                             <div class="form-group">
                                 <input type="submit" class="btn btn-primary" value="Добавить">
@@ -139,13 +139,13 @@
                 accept: 'jpeg|jpg|png,svg',
                 STRING: {
                     remove: '',
-                    denied:'Выбранный тип файла (.$ext) не доступен для загрузки! Выберите .jpeg, .jpg .png или .svg', 
+                    denied:'Выбранный тип файла (.$ext) не доступен для загрузки! Выберите .jpeg, .jpg .png или .svg',
                     duplicate:'Этот файл уже прикреплён:\n$file!'
                 }
             });
 
         $('.upload_files_button').click(function(){
-          $('input[id^=MultiFile1]').last().click(); 
+        $('input[id^=MultiFile1]').last().click();
         });
     </script>
- @endsection
+@endsection

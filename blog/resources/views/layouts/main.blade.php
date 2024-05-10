@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ZabTravel Главная</title>
+    <title>ZabTravel</title>
     <link rel="stylesheet" href="{{ asset('assets/vendors/flag-icon-css/css/flag-icon.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendors/font-awesome/css/all.min.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/vendors/aos/aos.css')}}">
@@ -48,6 +48,9 @@
                                 @endforeach
                             </div>
                         </li> --}}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('group.index') }}">Группы</a>
+                        </li>
                         @auth
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('person.main.index') }}">Личный кабинет</a>
@@ -132,6 +135,7 @@
     <script src="{{ asset('assets/vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
     <script src="{{ asset('assets/vendors/aos/aos.js')}}"></script>
     <script src="{{ asset('assets/js/main.js')}}"></script>
+    <script src="https://kit.fontawesome.com/b28275dfc4.js" crossorigin="anonymous"></script>
     <script>
         AOS.init({
             duration: 1000
