@@ -98,10 +98,30 @@
                         </section>
                     @endif
 
-
+                    <div class="row">
+                        <div class="col-lg-9 mx-auto">
+                            @if ($relatedGroups->count() > 0 )
+                                <section class="related-posts">
+                                    <h2 class="section-title mb-4" data-aos="fade-up">Отправьтесь в поход!</h2>
+                                    <div class="row">
+                                        @foreach ($relatedGroups as $relatedGroup)
+                                            <div class="col-md-4 fetured-post blog-post" data-aos="fade-up">
+                                                <a href="{{ route('group.show', $relatedGroup->id) }}" class="blog-post-permalink">
+                                                    <h6 class="blog-post-title">{{ $relatedGroup->title }}</h6>
+                                                </a>
+                                                <div class="d-flex justify-content-between">
+                                                    <p class="blog-post-category">{{ $relatedGroup->post->title }}</p>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </section>
+                            @endif
+                        </div>
+                    </div>
 
                     <section class="related-posts">
-                            <h2 class="section-title mb-4" data-aos="fade-up">Отправьтесь в поход!</h2>
+                            <h2 class="section-title mb-4" data-aos="fade-up">Или</h2>
                             <div class="row">
 
                                     <div class="col-md-4" data-aos="fade-right" data-aos-delay="100">
@@ -109,8 +129,7 @@
 
                                     </div>
                                     <div class="col-md-4" data-aos="fade-right" data-aos-delay="100">
-                                        <a href=""><h4 class="post-title">Присоединитесь к группе</h4></a>
-
+                                        <a href="{{ route('group.index', $post->id) }}"><h4 class="post-title">Все группы</h4></a>
                                     </div>
 
                             </div>

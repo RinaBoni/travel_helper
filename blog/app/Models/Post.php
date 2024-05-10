@@ -35,4 +35,9 @@ class Post extends Model
     public function comments(){
         return $this->hasMany(Comment::class, 'post_id', 'id');
     }
+
+    public function groups()
+    {
+        return $this->hasMany(Group::class, 'post_id', 'id');
+    }
 }

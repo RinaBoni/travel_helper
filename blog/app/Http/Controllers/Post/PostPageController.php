@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Post;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Group;
 use App\Models\Post;
 use App\Models\User;
 use Carbon\Carbon;
@@ -39,6 +40,7 @@ class PostPageController extends Controller
             ->where('id', '!=', $post->id)
             ->get()
             ->take(3);
-        return view('post.show', compact('post', 'date', 'relatedPosts'));
+        $relatedGroups = $post->groups;
+        return view('post.show', compact('post', 'date', 'relatedPosts', 'relatedGroups'));
     }
 }

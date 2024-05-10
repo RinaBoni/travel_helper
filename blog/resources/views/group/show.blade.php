@@ -18,6 +18,14 @@
                     <div class="col-lg-9 mx-auto" data-aos="fade-up">
                         {!! $group->additional_information !!}
                     </div>
+                    <div class="col-lg-9 mx-auto" data-aos="fade-up">
+                        <h6>Участники:</h6>
+                        @foreach ($users as $user)
+                            <div>
+                                Имя: {{ $user->name }}, почта {{ $user->email }}
+                            </div>
+                        @endforeach
+                    </div>
 
                     @if ($currentUser == $group->creator)
 
@@ -34,6 +42,18 @@
                             </form>
                         </div>
                     @endif
+
+                    <div class="col-lg-9 mx-auto" data-aos="fade-up">
+                        <div class="col-lg-9 mx-auto" data-aos="fade-up">
+                            <form action="{{ route('group.join', $group->id) }}", method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-warning btn-lg" data-aos="" data-aos-delay="300">
+                                    Присоединиться
+                                </button>
+                            </form>
+                            {{-- <a href="{{ route('group.join', $group->id) }}" class="btn btn-warning btn-lg">Присоединиться</a> --}}
+                        </div>
+                    </div>
 
                 </div>
             </section>
@@ -71,7 +91,7 @@
                                 <a href="{{ route('group.create') }}"><h4 class="post-title">Создайте группу</h4></a>
                             </div>
                             <div class="col-md-4" data-aos="fade-right" data-aos-delay="100">
-                                <a href=""><h4 class="post-title">Присоединитесь к группе</h4></a>
+                                <a href=""><h4 class="post-title">Все группы</h4></a>
                             </div>
                         </div>
                     </section>
