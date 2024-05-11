@@ -90,54 +90,51 @@
                                 @enderror --}}
                             </div>
 
+
+
                             <div class="card direct-chat direct-chat-primary w-50">
                                 <div class="card-header ui-sortable-handle" style="cursor: move;">
-                                <h3 class="card-title">Ссылки</h3>
-
-                                <div class="card-tools">
-                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
-                                    </button>
+                                    <h3 class="card-title">Ссылки</h3>
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                    </div>
                                 </div>
-                                </div>
-
                                 <div class="card-footer">
-                                <form action="#" method="post">
+                                    <form action="#" method="post">
+                                        <label>Сайт</label>
+                                        <input type="text" name="website" placeholder="сайт" class="form-control">
+                                        <label>YouTube</label>
+                                        <input type="text" name="youtube" placeholder="youtube" class="form-control">
+                                        <label>вконтакте</label>
+                                        <input type="text" name="vk" placeholder="vk" class="form-control">
+                                        <label>одноклассники</label>
+                                        <input type="text" name="odnoklassniki" placeholder="odnoklassniki" class="form-control">
+                                        <label>Telegram</label>
+                                        <input type="text" name="telegram" placeholder="telegram" class="form-control mb-2">
 
-                                    <label>Сайт</label>
-                                    <input type="text" name="website" placeholder="сайт" class="form-control">
-                                    <label>YouTube</label>
-                                    <input type="text" name="youtube" placeholder="youtube" class="form-control">
-                                    <label>вконтакте</label>
-                                    <input type="text" name="vk" placeholder="vk" class="form-control">
-                                    <label>одноклассники</label>
-                                    <input type="text" name="odnoklassniki" placeholder="odnoklassniki" class="form-control">
-                                    <label>Telegram</label>
-                                    <input type="text" name="telegram" placeholder="telegram" class="form-control mb-2">
-
-                                    <span class="input-group-append mb-2">
-                                        <button type="button" class="btn btn-primary">Сохранить</button>
-                                    </span>
-                                </form>
+                                        <span class="input-group-append mb-2">
+                                            <button type="button" class="btn btn-primary">Сохранить</button>
+                                        </span>
+                                    </form>
                                 </div>
-                                <!-- /.card-footer-->
                             </div>
 
 
+
+
                             <div class="card direct-chat direct-chat-primary w-50">
                                 <div class="card-header ui-sortable-handle" style="cursor: move;">
-                                <h3 class="card-title">Номера телефонов</h3>
-
-                                <div class="card-tools">
-                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
-                                    </button>
+                                    <h3 class="card-title">Номера телефонов</h3>
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                    </div>
                                 </div>
-                                </div>
-
                                 <div class="card-footer">
                                     <form action="#" method="post">
-
                                         <div id="phoneNumbersFields">
                                             <label>Номер телефона</label>
                                             <input type="text" name="phone_number" placeholder="номер телефона" class="form-control">
@@ -152,7 +149,6 @@
                                             <button type="button" class="btn btn-primary">Сохранить</button>
                                         </span>
                                     </form>
-
                                     <script>
                                         document.getElementById('addEmployeeButton').addEventListener('click', function() {
                                             // Создаем новый блок для номера телефона
@@ -163,11 +159,9 @@
                                                 <label>Должность сотрудника</label>
                                                 <input type="text" name="type" placeholder="должность" class="form-control mb-2">
                                             `;
-
                                             // Добавляем новый блок после последнего блока с номером телефона
                                             document.getElementById('phoneNumbersFields').appendChild(newPhoneNumberBlock);
                                         });
-
                                         document.getElementById('removeLastButton').addEventListener('click', function() {
                                             var phoneNumbersFields = document.getElementById('phoneNumbersFields');
                                             // Удаляем последний блок с номером телефона, если он существует
@@ -177,39 +171,10 @@
                                         });
                                     </script>
                                 </div>
-                                <!-- /.card-footer-->
                             </div>
 
-{{--
 
-                            <button id="addEmployeeButton">+</button> --}}
-                            <div id="phoneNumbersFields"></div>
 
-                            {{-- <script>
-                                function addphoneNumbersFields() {
-                                    // Создаем элементы для нового поля номера телефона
-                                    var phoneNumberInput = document.createElement("input");
-                                    phoneNumberInput.type = "text";
-                                    phoneNumberInput.name = "phone_number"; // Массив для хранения нескольких номеров телефонов
-                                    phoneNumberInput.placeholder = "Номер телефона";
-                                    phoneNumberInput.class = "form-control";
-
-                                    // Создаем элементы для нового поля должности сотрудника
-                                    var positionInput = document.createElement("input");
-                                    positionInput.type = "text";
-                                    positionInput.name = "type"; // Массив для хранения нескольких должностей
-                                    positionInput.placeholder = "Должность сотрудника";
-                                    positionInput.class = "form-control mb-2";
-
-                                    // Добавляем новые поля в контейнер
-                                    var container = document.getElementById("phoneNumbersFields");
-                                    container.appendChild(phoneNumberInput);
-                                    container.appendChild(positionInput);
-                                }
-
-                                // Обработчик нажатия на кнопку "+"
-                                document.getElementById("addEmployeeButton").addEventListener("click", addphoneNumbersFields);
-                            </script> --}}
 
                             <div class="form-group w-50">
                                 <label for="exampleInputFile">Добавить привью</label>
@@ -227,6 +192,9 @@
                                 @enderror
                             </div>
 
+
+
+
                             <div class="form-group w-50">
                                 <label for="exampleInputFile">Добавить главное изображения</label>
                                 <div class="input-group">
@@ -242,6 +210,39 @@
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
+
+
+
+                            <form action="{{ route('admin.post.imagestore') }}" method="POST" class="submit-request-form clearfix" enctype="multipart/form-data">
+                                @csrf
+                                <div class="form-group w-50">
+                                    <label for="exampleInputFile">Добавить </label>
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" name="image">
+                                            <label class="custom-file-label">Выберете изображение</label>
+                                        </div>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">Загрузка</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="title_image">
+                                        <label class="form-check-label" for="title_image">Титульное изображение</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" class="btn btn-primary" value="Добавить изображение">
+                                </div>
+                            </form>
+
+
+                            @if (session()->has('message'))
+                                <div class="info-box mb-3 bg-success">
+                                    {{ session()->get('message') }}
+                                </div>
+                            @endif
+
 
 
 

@@ -7,11 +7,6 @@
             <p class="edica-blog-post-meta" data-aos="fade-up" data-aos-delay="200"> {{ $date->translatedFormat('F') }} {{ $date->day }}  {{$date->year}} • {{ $date->format('H:i') }} • {{ $post->comments->count() }} Комментария</p>
 
 
-
-
-
-
-
             {{-- <section class="blog-post-featured-img" data-aos="fade-up" data-aos-delay="300"> --}}
                 <div id="myCarousel" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
@@ -43,36 +38,37 @@
                     </a>
                 </div>
             {{-- </section> --}}
-            <section class="blog-post-featured-img" data-aos="fade-up" data-aos-delay="300">
-                <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                        <li data-target="#myCarousel" data-slide-to="0" class=""></li>
-                        <li data-target="#myCarousel" data-slide-to="1" class="active"></li>
-                        <li data-target="#myCarousel" data-slide-to="2" class=""></li>
-                        </ol>
-                        <div class="carousel-inner">
-
-                        <div class="carousel-item">
-                            <img class="first-slide" src="https://avatars.mds.yandex.net/i?id=1bee28e3176a1847fb5010f319d96999e55e10df-11035673-images-thumbs&n=13" alt="First slide">
-                        </div>
-
-                        <div class="carousel-item active">
-                            <img class="second-slide" src="https://avatars.mds.yandex.net/i?id=1bee28e3176a1847fb5010f319d96999e55e10df-11035673-images-thumbs&n=13" alt="Second slide">
-                        </div>
-
-                        <div class="carousel-item">
-                            <img class="third-slide" src="https://avatars.mds.yandex.net/i?id=1bee28e3176a1847fb5010f319d96999e55e10df-11035673-images-thumbs&n=13" alt="Third slide">
-                        </div>
-                        </div>
-                        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+            <section class="blog-post-featured-img" data-aos="" data-aos-delay="">
+                <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="5000">
+                    <ol class="carousel-indicators">
+                        @if($caruselImages)
+                            @foreach ($caruselImages as $image)
+                                @if ($loop->first)
+                                    <li data-target="#myCarousel" data-slide-to="{{ $image->id }}" class="active"></li>
+                                @else
+                                    <li data-target="#myCarousel" data-slide-to="{{ $image->id }}" class=""></li>
+                                @endif
+                            @endforeach
+                        @endif
+                    </ol>
+                    <div class="carousel-inner">
+                        @if($caruselImages)
+                            @foreach ($caruselImages as $image)
+                                <div class="carousel-item @if($loop->first) active @endif">
+                                    <img class="{{ $image->id }}-slide" src="{{ asset('storage/' . $image->image) }}" alt="{{ $image->id }}-slide">
+                                </div>
+                            @endforeach
+                        @endif
+                    </div>
+                    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                    </a>
+                    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
-                        </a>
-                    </div>
+                    </a>
+                </div>
             </section>
 
 
@@ -81,7 +77,7 @@
 
 
 
-            <section class="blog-post-featured-img" data-aos="fade-up" data-aos-delay="300">
+            <section class="blog-post-featured-img" data-aos="" data-aos-delay="">
                 <img src="{{ asset('storage/' . $post->main_image) }}" alt="featured image" class="w-100">
             </section>
             <section class="post-content">

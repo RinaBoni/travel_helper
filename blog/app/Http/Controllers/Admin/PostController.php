@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Post\StoreRequest;
 use App\Http\Requests\Admin\Post\UpdateRequest;
 use App\Models\Category;
+use App\Models\Image;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
@@ -69,5 +70,19 @@ class PostController extends BasePostController
     public function image()
     {
         return view('admin.post.image');
+    }
+    public function imagestore(Request $request)
+    {
+        $request->validate([
+            'image' => 'required|mimes:png,jpg,bmp,gif',
+        ]);
+        $uploadImage = $request->file('image');
+        $storeImage = Storage::disk('public')->put('/images',$uploadImage);
+
+        Image::firstOrCreate([
+            'image' => $storeImage,
+            'title_image' => false]);
+
+        return redirect()->back()->with('message', 'image uploaded successfully');
     }
 }

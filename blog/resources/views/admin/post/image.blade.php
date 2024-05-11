@@ -7,7 +7,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Добавление достопримечательности</h1>
+                        <h1 class="m-0">Добавление изображений</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -28,48 +28,37 @@
                 <div class="row">
 
                     <div class="col-12">
-                        <form action="{{ route('admin.post.store') }}" method="POST" class="submit-request-form clearfix" enctype="multipart/form-data">
+
+
+                        <form action="{{ route('admin.post.imagestore') }}" method="POST" class="submit-request-form clearfix" enctype="multipart/form-data">
                             @csrf
-
-
                             <div class="form-group w-50">
-                                <label for="exampleInputFile">Добавить привью</label>
+                                <label for="exampleInputFile">Добавить </label>
                                 <div class="input-group">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" name="preview_image">
+                                        <input type="file" class="custom-file-input" name="image">
                                         <label class="custom-file-label">Выберете изображение</label>
                                     </div>
                                     <div class="input-group-append">
                                         <span class="input-group-text">Загрузка</span>
                                     </div>
                                 </div>
-                                @error('preview_image')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
-
-                            <div class="form-group w-50">
-                                <label for="exampleInputFile">Добавить главное изображения</label>
-                                <div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" multiple class="custom-file-input" name="main_image">
-                                        <label class="custom-file-label">Выберете изображения</label>
-                                    </div>
-                                    <div class="input-group-append">
-                                        <span class="input-group-text">Загрузка</span>
-                                    </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="title_image">
+                                    <label class="form-check-label" for="title_image">Титульное изображение</label>
                                 </div>
-                                @error('main_image')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
                             </div>
-
-
-
                             <div class="form-group">
                                 <input type="submit" class="btn btn-primary" value="Добавить">
                             </div>
                         </form>
+
+
+                        @if (session()->has('message'))
+                            <div class="info-box mb-3 bg-success">
+                                {{ session()->get('message') }}
+                            </div>
+                        @endif
                     </div>
 
                 </div>

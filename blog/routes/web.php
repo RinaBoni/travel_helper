@@ -164,6 +164,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['aut
         Route::get('/', [PostController::class, 'index'])->name('admin.post.index');
         Route::get('/create', [PostController::class, 'create'])->name('admin.post.create');
         Route::get('/image', [PostController::class, 'image'])->name('admin.post.image');
+        Route::post('/image', [PostController::class, 'imagestore'])->name('admin.post.imagestore');
         Route::post('/', [PostController::class, 'store'])->name('admin.post.store');
         Route::get('/{post}', [PostController::class, 'show'])->name('admin.post.show');
         Route::get('/{post}/edit', [PostController::class, 'edit'])->name('admin.post.edit');
