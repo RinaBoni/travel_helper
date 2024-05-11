@@ -48,7 +48,7 @@ class PostController extends BasePostController
 
     public function store(StoreRequest $request)
     {
-        
+
         //обрабатываем запрос
         $data = $request->validated();
 
@@ -64,5 +64,10 @@ class PostController extends BasePostController
         $post = $this->service->update($data, $post);
 
         return view('admin.post.show', compact('post'));
+    }
+
+    public function image()
+    {
+        return view('admin.post.image');
     }
 }

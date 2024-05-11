@@ -163,11 +163,14 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['aut
     Route::group(['namespace' => 'Post', 'prefix' => 'posts'], function(){
         Route::get('/', [PostController::class, 'index'])->name('admin.post.index');
         Route::get('/create', [PostController::class, 'create'])->name('admin.post.create');
+        Route::get('/image', [PostController::class, 'image'])->name('admin.post.image');
         Route::post('/', [PostController::class, 'store'])->name('admin.post.store');
         Route::get('/{post}', [PostController::class, 'show'])->name('admin.post.show');
         Route::get('/{post}/edit', [PostController::class, 'edit'])->name('admin.post.edit');
         Route::patch('/{post}', [PostController::class, 'update'])->name('admin.post.update');
         Route::delete('/{post}', [PostController::class, 'delete'])->name('admin.post.delete');
+
+
     });
 
 

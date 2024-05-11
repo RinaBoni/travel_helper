@@ -12,6 +12,37 @@
 
 
 
+            {{-- <section class="blog-post-featured-img" data-aos="fade-up" data-aos-delay="300"> --}}
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class=""></li>
+                    <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+                    <li data-target="#myCarousel" data-slide-to="2" class="active"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                    <div class="carousel-item">
+                        <img class="first-slide" src="https://avatars.mds.yandex.net/i?id=1bee28e3176a1847fb5010f319d96999e55e10df-11035673-images-thumbs&n=13" alt="First slide">
+
+                    </div>
+                    <div class="carousel-item">
+                        <img class="second-slide" src="https://mykaleidoscope.ru/x/uploads/posts/2022-10/1666137209_33-mykaleidoscope-ru-p-veselii-kotik-oboi-36.jpg" alt="Second slide">
+
+                    </div>
+                    <div class="carousel-item active">
+                        <img class="third-slide" src="https://img.razrisyika.ru/kart/24/1200/95244-kotiki-kartinki-14.jpg" alt="Third slide">
+
+                    </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            {{-- </section> --}}
             <section class="blog-post-featured-img" data-aos="fade-up" data-aos-delay="300">
                 <div id="myCarousel" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
