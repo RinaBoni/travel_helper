@@ -82,6 +82,9 @@
                                 <i class="fa fa-regular fa-heart" style="color: #B197FC;"></i>
                             </div>
                         @endguest
+
+                        <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Acd2df954ba5a9c4ff790d75e48717239ca0788352d6769dabacc7bcbe8659b34&amp;width=100%25&amp;height=554&amp;lang=ru_RU&amp;scroll=true"></script>
+
                     </section>
                     @if ($relatedPosts->count() > 0 )
                         <section class="related-posts">

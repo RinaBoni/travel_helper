@@ -105,13 +105,16 @@ Route::group(['namespace' => 'Group', 'prefix' => 'group'], function(){
     Route::get('/create', [GroupController::class, 'create'])->name('group.create');
     Route::post('/', [GroupController::class, 'store'])->name('group.store');
     Route::get('/{group}', [GroupController::class, 'show'])->name('group.show');
-    // Route::get('/{group}', [GroupController::class, 'join'])->name('group.join');
     Route::get('/{group}/edit', [GroupController::class, 'edit'])->name('group.edit');
     Route::patch('/{group}', [GroupController::class, 'update'])->name('group.update');
     Route::delete('/{group}', [GroupController::class, 'delete'])->name('group.delete');
 
     Route::group(['namespace' => 'Join', 'prefix' => '{group}/join'], function(){
         Route::post('/',[GroupController::class, 'join'])->name('group.join');
+    });
+
+    Route::group(['namespace' => 'Leave', 'prefix' => '{group}/leave'], function(){
+        Route::post('/',[GroupController::class, 'leave'])->name('group.leave');
     });
 
 });

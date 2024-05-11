@@ -15,8 +15,11 @@ class Group extends Model
     protected $guarded = false;
 
     public function post(){
-
         return $this->belongsTo(Post::class, 'post_id', 'id');
+    }
 
+
+    public function users(){
+        return $this->belongsToMany(User::class, 'group_users');
     }
 }

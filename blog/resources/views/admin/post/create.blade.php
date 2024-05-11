@@ -30,6 +30,7 @@
                     <div class="col-12">
                         <form action="{{ route('admin.post.store') }}" method="POST" class="submit-request-form clearfix" enctype="multipart/form-data">
                             @csrf
+                            <label>Название</label>
                             <div class="form-group w-25">
                                 <input type="text" class="form-control" name="title" placeholder="Название достопримечательности"
                                     value="{{ old('title') }}">
@@ -80,7 +81,14 @@
 
 
 
-
+                            <label>Ссылка на Яндекс.Карту</label>
+                            <div class="form-group w-25">
+                                {{-- <input type="text" class="form-control" name="map" placeholder="Яндекс.Карта" value="{{ old('map') }}"> --}}
+                                <input type="text" class="form-control" name="map" placeholder="Яндекс.Карта"">
+                                {{-- @error('map')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror --}}
+                            </div>
 
 
                             <div class="form-group w-50">
