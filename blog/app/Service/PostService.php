@@ -27,6 +27,19 @@ class PostService
                 'preview_image' => $data['preview_image'],
                 'main_image' => $data['main_image'],
                 'category_id' => $data['category_id'],
+                'website' => $data['website'],
+                'youtube' => $data['youtube'],
+                'vk' => $data['vk'],
+                'telegram' => $data['telegram'],
+                'odnoklassniki' => $data['odnoklassniki'],
+                'country' => $data['country'],
+                'region' => $data['region'],
+                'district' => $data['district'],
+                'city' => $data['city'],
+                'street' => $data['street'],
+                'building' => $data['building'],
+                'coordinates' => $data['coordinates'],
+                'map' => $data['map'],
             ]);
             if(isset($tagIds)){
                 $post->tags()->attach($tagIds);

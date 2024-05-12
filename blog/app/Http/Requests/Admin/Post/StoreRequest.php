@@ -29,6 +29,19 @@ class StoreRequest extends FormRequest
             'category_id' => 'required|integer|exists:categories,id',//проверка существует ли такая категория в таблице категорий, должно быть рабно id
             'tag_ids' => 'nullable|array',
             'tag_ids.*' => 'nullable|integer|exists:tags,id',
+            'website' => 'nullable|string',
+            'youtube' => 'nullable|string',
+            'vk' => 'nullable|string',
+            'telegram' => 'nullable|string',
+            'odnoklassniki' => 'nullable|string',
+            'country' => 'nullable|string',
+            'region' => 'nullable|string',
+            'district' => 'nullable|string',
+            'city' => 'nullable|string',
+            'street' => 'nullable|string',
+            'building' => 'nullable|string',
+            'coordinates' => 'nullable|string',
+            'map' => 'required|string',
         ];
     }
 
@@ -47,6 +60,20 @@ class StoreRequest extends FormRequest
             'category_id.integer' => 'ID категории должен быть числом',
             'category_id.exists' => 'ID категории должен быть в базе данных',
             'tag_ids.array' => 'Необходимо отправить массив данных',
+            'website.string' => 'Данные должны быть в виде строки',
+            'youtube.string' => 'Данные должны быть в виде строки',
+            'vk.string' => 'Данные должны быть в виде строки',
+            'telegram.string' => 'Данные должны быть в виде строки',
+            'odnoklassniki.string' => 'Данные должны быть в виде строки',
+            'country.string' => 'Данные должны быть в виде строки',
+            'region.string' => 'Данные должны быть в виде строки',
+            'district.string' => 'Данные должны быть в виде строки',
+            'city.string' => 'Данные должны быть в виде строки',
+            'street.string' => 'Данные должны быть в виде строки',
+            'building.string' => 'Данные должны быть в виде строки',
+            'coordinates.string' => 'Данные должны быть в виде строки',
+            'map.string' => 'Данные должны быть в виде строки',
+            'map.required' => 'Это поле необходимо заполнить',
         ];
     }
 }

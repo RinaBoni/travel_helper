@@ -94,6 +94,35 @@
 
                             <div class="card direct-chat direct-chat-primary w-50">
                                 <div class="card-header ui-sortable-handle" style="cursor: move;">
+                                    <h3 class="card-title">Адрес</h3>
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                        <label>Страна</label>
+                                        <input type="text" name="country" placeholder="Страна" class="form-control">
+                                        <label>Регион</label>
+                                        <input type="text" name="region" placeholder="Регион" class="form-control">
+                                        <label>Район</label>
+                                        <input type="text" name="region" placeholder="Район" class="form-control">
+                                        <label>Город</label>
+                                        <input type="text" name="city" placeholder="Город" class="form-control">
+                                        <label>Улица</label>
+                                        <input type="text" name="street" placeholder="Улица" class="form-control mb-2">
+                                        <label>Здание</label>
+                                        <input type="text" name="building" placeholder="Здание" class="form-control mb-2">
+                                        <label>Координаты</label>
+                                        <input type="text" name="coordinates" placeholder="Координаты" class="form-control mb-2">
+                                </div>
+                            </div>
+
+
+
+                            <div class="card direct-chat direct-chat-primary w-50">
+                                <div class="card-header ui-sortable-handle" style="cursor: move;">
                                     <h3 class="card-title">Ссылки</h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -102,7 +131,6 @@
                                     </div>
                                 </div>
                                 <div class="card-footer">
-                                    <form action="#" method="post">
                                         <label>Сайт</label>
                                         <input type="text" name="website" placeholder="сайт" class="form-control">
                                         <label>YouTube</label>
@@ -113,18 +141,13 @@
                                         <input type="text" name="odnoklassniki" placeholder="odnoklassniki" class="form-control">
                                         <label>Telegram</label>
                                         <input type="text" name="telegram" placeholder="telegram" class="form-control mb-2">
-
-                                        <span class="input-group-append mb-2">
-                                            <button type="button" class="btn btn-primary">Сохранить</button>
-                                        </span>
-                                    </form>
                                 </div>
                             </div>
 
 
 
 
-                            <div class="card direct-chat direct-chat-primary w-50">
+                            {{-- <div class="card direct-chat direct-chat-primary w-50">
                                 <div class="card-header ui-sortable-handle" style="cursor: move;">
                                     <h3 class="card-title">Номера телефонов</h3>
                                     <div class="card-tools">
@@ -171,7 +194,7 @@
                                         });
                                     </script>
                                 </div>
-                            </div>
+                            </div> --}}
 
 
 
@@ -213,7 +236,7 @@
 
 
 
-                            <form action="{{ route('admin.post.imagestore') }}" method="POST" class="submit-request-form clearfix" enctype="multipart/form-data">
+                            {{-- <form action="{{ route('admin.post.imagestore') }}" method="POST" class="submit-request-form clearfix" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group w-50">
                                     <label for="exampleInputFile">Добавить </label>
@@ -241,7 +264,7 @@
                                 <div class="info-box mb-3 bg-success">
                                     {{ session()->get('message') }}
                                 </div>
-                            @endif
+                            @endif --}}
 
 
 

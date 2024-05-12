@@ -50,6 +50,7 @@ class PostController extends BasePostController
     public function store(StoreRequest $request)
     {
 
+        // dd($request);
         //обрабатываем запрос
         $data = $request->validated();
 
