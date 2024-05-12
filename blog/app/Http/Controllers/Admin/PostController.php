@@ -56,7 +56,9 @@ class PostController extends BasePostController
 
         //взаимодействие с базой
         $this->service->store($data);
+        // return view('admin.post.index', compact('exseption'));
         return redirect()->route('admin.post.index');
+
     }
 
     public function update(UpdateRequest $request, Post $post)

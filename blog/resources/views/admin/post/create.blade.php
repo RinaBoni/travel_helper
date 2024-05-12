@@ -107,7 +107,7 @@
                                         <label>Регион</label>
                                         <input type="text" name="region" placeholder="Регион" class="form-control">
                                         <label>Район</label>
-                                        <input type="text" name="region" placeholder="Район" class="form-control">
+                                        <input type="text" name="district" placeholder="Район" class="form-control">
                                         <label>Город</label>
                                         <input type="text" name="city" placeholder="Город" class="form-control">
                                         <label>Улица</label>

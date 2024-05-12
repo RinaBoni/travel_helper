@@ -13,6 +13,7 @@ class PostService
         try{
             DB::beginTransaction();
 
+
             if (isset($data['tag_ids'])){
                 $tagIds = $data['tag_ids'];
             unset($data['tag_ids']);
@@ -27,28 +28,32 @@ class PostService
                 'preview_image' => $data['preview_image'],
                 'main_image' => $data['main_image'],
                 'category_id' => $data['category_id'],
-                'website' => $data['website'],
-                'youtube' => $data['youtube'],
-                'vk' => $data['vk'],
-                'telegram' => $data['telegram'],
-                'odnoklassniki' => $data['odnoklassniki'],
-                'country' => $data['country'],
-                'region' => $data['region'],
-                'district' => $data['district'],
-                'city' => $data['city'],
-                'street' => $data['street'],
-                'building' => $data['building'],
-                'coordinates' => $data['coordinates'],
-                'map' => $data['map'],
+                'website' => isset($data['website']) && $data['website'] !== '0' ? $data['website'] : null,
+                'youtube' => isset($data['youtube']) && $data['youtube'] !== '0' ? $data['youtube'] : null,
+                'vk' => isset($data['vk']) && $data['vk'] !== '0' ? $data['vk'] : null,
+                'telegram' => isset($data['telegram']) && $data['telegram'] !== '0' ? $data['telegram'] : null,
+                'odnoklassniki' => isset($data['odnoklassniki']) && $data['odnoklassniki'] !== '0' ? $data['odnoklassniki'] : null,
+                'country' => isset($data['country']) && $data['country'] !== '0' ? $data['country'] : null,
+                'region' => isset($data['region']) && $data['region'] !== '0' ? $data['region'] : null,
+                'district' => isset($data['district']) && $data['district'] !== '0' ? $data['district'] : null,
+                'city' => isset($data['city']) && $data['city'] !== '0' ? $data['city'] : null,
+                'street ' => isset($data['street ']) && $data['street '] !== '0' ? $data['street '] : null,
+                'building' => isset($data['building']) && $data['building'] !== '0' ? $data['building'] : null,
+                'coordinates' => isset($data['coordinates']) && $data['coordinates'] !== '0' ? $data['coordinates'] : null,
+                'map' => isset($data['map']) && $data['map'] !== '0' ? $data['map'] : null,
             ]);
+            // dd($post);
             if(isset($tagIds)){
                 $post->tags()->attach($tagIds);
             }
+            // dd($post);
 
             DB::commit();
         } catch(\Exception $exseption){
             DB::rollBack();
-            abort(500);
+            $exseption->getMessage();
+            return $exseption;
+            // abort(500);
         }
     }
 
