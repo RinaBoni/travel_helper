@@ -85,9 +85,9 @@
                             <div class="form-group w-50">
                                 {{-- <input type="text" class="form-control" name="map" placeholder="Яндекс.Карта" value="{{ old('map') }}"> --}}
                                 <input type="text" class="form-control" name="map" placeholder="Яндекс.Карта"">
-                                {{-- @error('map')
+                                @error('map')
                                     <div class="text-danger">{{ $message }}</div>
-                                @enderror --}}
+                                @enderror
                             </div>
 
 
@@ -104,18 +104,39 @@
                                 <div class="card-footer">
                                         <label>Страна</label>
                                         <input type="text" name="country" placeholder="Страна" class="form-control">
+                                        @error('country')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                         <label>Регион</label>
                                         <input type="text" name="region" placeholder="Регион" class="form-control">
+                                        @error('region')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                         <label>Район</label>
                                         <input type="text" name="district" placeholder="Район" class="form-control">
+                                        @error('district')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                         <label>Город</label>
                                         <input type="text" name="city" placeholder="Город" class="form-control">
+                                        @error('city')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                         <label>Улица</label>
                                         <input type="text" name="street" placeholder="Улица" class="form-control mb-2">
+                                        @error('street')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                         <label>Здание</label>
                                         <input type="text" name="building" placeholder="Здание" class="form-control mb-2">
+                                        @error('building')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                         <label>Координаты</label>
                                         <input type="text" name="coordinates" placeholder="Координаты" class="form-control mb-2">
+                                        @error('coordinates')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                 </div>
                             </div>
 
@@ -133,14 +154,29 @@
                                 <div class="card-footer">
                                         <label>Сайт</label>
                                         <input type="text" name="website" placeholder="сайт" class="form-control">
+                                        @error('website')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                         <label>YouTube</label>
                                         <input type="text" name="youtube" placeholder="youtube" class="form-control">
+                                        @error('youtube')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                         <label>вконтакте</label>
                                         <input type="text" name="vk" placeholder="vk" class="form-control">
+                                        @error('vk')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                         <label>одноклассники</label>
                                         <input type="text" name="odnoklassniki" placeholder="odnoklassniki" class="form-control">
+                                        @error('odnoklassniki')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                         <label>Telegram</label>
                                         <input type="text" name="telegram" placeholder="telegram" class="form-control mb-2">
+                                        @error('telegram')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                 </div>
                             </div>
 
