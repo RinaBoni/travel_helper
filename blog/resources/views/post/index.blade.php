@@ -105,9 +105,21 @@
                             @endforeach
                         </ul>
                     </div>
-                    <div class="widget">
-                        <h5 class="widget-title">Categories</h5>
-                        <img src="{{ asset('assets/images/blog_widget_categories.jpg')}}" alt="categories" class="w-100">
+                    <div class="widget widget-post-list">
+                        <h5 class="widget-title">Группы</h5>
+                        <ul class="post-list">
+                            @foreach ($groups as $group)
+                                <li class="post">
+                                    <a href="{{ route('group.show', $group->id) }}" class="post-permalink media">
+                                        {{-- <img src="{{ 'storage/' . $post->preview_image}}" alt="blog post"> --}}
+                                        <div class="media-body">
+                                            <h5 class="post-title">{{ $group->title }}</h5>
+                                            <h6 class="post-title">{{ $group->post->title }}</h6>
+                                        </div>
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
                     </div>
                 </div>
             </div>

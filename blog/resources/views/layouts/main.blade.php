@@ -26,7 +26,7 @@
     <header class="edica-header">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light">
-                <a class="navbar-brand" href="index.html"><img src="{{ asset('assets/images/logo.svg')}}" alt="Edica"></a>
+                <a class="navbar-brand" href="index.html"><img src="{{ asset('assets/images/TRAVEL_purple.svg')}}" alt="Edica"></a>
                 <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#edicaMainNav" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -40,14 +40,14 @@
                             <a class="nav-link" href="{{ route('category.index') }}">Категории</a>
                         </li>
 
-                        {{-- <li class="nav-item dropdown">
+                        <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="blogDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Категории</a>
                             <div class="dropdown-menu" aria-labelledby="blogDropdown">
                                 @foreach ($categories as $category)
                                     <a class="dropdown-item" href="{{ route('category.post.index', $category->id) }}">{{ $category->title }}</a>
                                 @endforeach
                             </div>
-                        </li> --}}
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('group.index') }}">Группы</a>
                         </li>
@@ -90,10 +90,10 @@
             <div class="row footer-widget-area">
                 <div class="col-md-3">
                     <a href="index.html" class="footer-brand-wrapper">
-                        <img src="{{ asset('assets/images/logo.svg')}}" alt="edica logo">
+                        <img src="{{ asset('assets/images/TRAVEL_purple.svg')}}" alt="edica logo">
                     </a>
-                    <p class="contact-details">hello@edica.com</p>
-                    <p class="contact-details">+23 3000 000 00</p>
+                    <p class="contact-details">почта</p>
+                    <p class="contact-details">телефон</p>
                     <nav class="footer-social-links">
                         <a href="#!"><i class="fab fa-facebook-f"></i></a>
                         <a href="#!"><i class="fab fa-twitter"></i></a>
@@ -103,22 +103,12 @@
                 </div>
                 <div class="col-md-3">
                     <nav class="footer-nav">
-                        <a href="#!" class="nav-link">Company</a>
-                        <a href="#!" class="nav-link">Android App</a>
-                        <a href="#!" class="nav-link">ios App</a>
-                        <a href="#!" class="nav-link">Blog</a>
-                        <a href="#!" class="nav-link">Partners</a>
-                        <a href="#!" class="nav-link">Careers</a>
+                        <a href="#!" class="nav-link">Партнеры</a>
                     </nav>
                 </div>
                 <div class="col-md-3">
                     <nav class="footer-nav">
                         <a href="#!" class="nav-link">FAQ</a>
-                        <a href="#!" class="nav-link">Reporting</a>
-                        <a href="#!" class="nav-link">Block Storage</a>
-                        <a href="#!" class="nav-link">Tools & Integrations</a>
-                        <a href="#!" class="nav-link">API</a>
-                        <a href="#!" class="nav-link">Pricing</a>
                     </nav>
                 </div>
                 <div class="col-md-3">
@@ -127,11 +117,10 @@
             </div>
             <div class="footer-bottom-content">
                 <nav class="nav footer-bottom-nav">
-                    <a href="#!">Privacy & Policy</a>
-                    <a href="#!">Terms</a>
-                    <a href="#!">Site Map</a>
+                    <a href="#!">Приватность & Политика</a>
+                    <a href="#!">Условия</a>
                 </nav>
-                <p class="mb-0">© Edica. 2020 <a href="https://www.bootstrapdash.com" target="_blank" rel="noopener noreferrer" class="text-reset">bootstrapdash</a> . All rights reserved.</p>
+                <p class="mb-0">© Travel. 2024 <a href="#" target="_blank" rel="noopener noreferrer" class="text-reset"></a> . All rights reserved.</p>
             </div>
         </div>
     </footer>

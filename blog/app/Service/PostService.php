@@ -58,36 +58,59 @@ class PostService
     }
 
     public function update($data, $post)
-    {
-        try{
-            DB::beginTransaction();
+{
+    try {
+        DB::beginTransaction();
 
-            if (isset($data['tag_ids'])){
-                $tagIds = $data['tag_ids'];
+        if (isset($data['tag_ids'])) {
+            $tagIds = $data['tag_ids'];
             unset($data['tag_ids']);
-            }
+        }
 
-            //заносим в бд путь к изображению (Storage::put сохраняет изображение и возвращает путь к нему)
-            if(isset($data['preview_image'])){
-                    $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
-                }
+        // Сохранение изображений и обновление путей к ним в базе данных
+        if (isset($data['preview_image'])) {
+            $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
+        }
 
-            if(isset($data['main_image'])){
-                $data['main_image'] = Storage::disk('public')->put('/images', $data['main_image']);
-            }
+        if (isset($data['main_image'])) {
+            $data['main_image'] = Storage::disk('public')->put('/images', $data['main_image']);
+        }
 
-            $post->update($data);
+        // Обновление записи в базе данных
+        $updateData = [
+            'title' => $data['title'],
+            'content' => $data['content'],
+            'preview_image' => isset($data['preview_image']) ? $data['preview_image'] : $post->preview_image,
+            'main_image' => isset($data['main_image']) ? $data['main_image'] : $post->main_image,
+            'category_id' => $data['category_id'],
+            'website' => isset($data['website']) && $data['website'] !== '0' ? $data['website'] : null,
+            'youtube' => isset($data['youtube']) && $data['youtube'] !== '0' ? $data['youtube'] : null,
+            'vk' => isset($data['vk']) && $data['vk'] !== '0' ? $data['vk'] : null,
+            'telegram' => isset($data['telegram']) && $data['telegram'] !== '0' ? $data['telegram'] : null,
+            'odnoklassniki' => isset($data['odnoklassniki']) && $data['odnoklassniki'] !== '0' ? $data['odnoklassniki'] : null,
+            'country' => isset($data['country']) && $data['country'] !== '0' ? $data['country'] : null,
+            'region' => isset($data['region']) && $data['region'] !== '0' ? $data['region'] : null,
+            'district' => isset($data['district']) && $data['district'] !== '0' ? $data['district'] : null,
+            'city' => isset($data['city']) && $data['city'] !== '0' ? $data['city'] : null,
+            'street ' => isset($data['street ']) && $data['street '] !== '0' ? $data['street '] : null,
+            'building' => isset($data['building']) && $data['building'] !== '0' ? $data['building'] : null,
+            'coordinates' => isset($data['coordinates']) && $data['coordinates'] !== '0' ? $data['coordinates'] : null,
+            'map' => isset($data['map']) && $data['map'] !== '0' ? $data['map'] : null,
+        ];
 
-            if(isset($tagIds)){
-                $post->tags()->sync($tagIds);
-            }
+        $post->update($updateData);
 
+        if (isset($tagIds)) {
+            $post->tags()->sync($tagIds);
+        }
 
-            DB::commit();
+        DB::commit();
 
         }catch(Exception $exseption){
             DB::rollBack();
-            abort(500);
+            $exseption->getMessage();
+            return $exseption;
+            // abort(500);
         }
 
         return $post;

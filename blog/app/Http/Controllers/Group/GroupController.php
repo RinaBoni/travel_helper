@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Group;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Group\StoreRequest;
 use App\Http\Requests\Group\UpdateRequest;
+use App\Models\Category;
 use App\Models\Group;
 use App\Models\GroupUser;
 use App\Models\Post;
@@ -17,7 +18,8 @@ class GroupController extends Controller
 {
     public function index(){
         $groups = Group::paginate(9);
-        return view('group.index', compact('groups'));
+        $categories = Category::all();
+        return view('group.index', compact('groups', 'categories'));
     }
 
 
@@ -25,7 +27,8 @@ class GroupController extends Controller
     public function create(){
 
         $posts = Post::all();
-        return view('group.create', compact('posts'));
+        $categories = Category::all();
+        return view('group.create', compact('posts', 'categories'));
     }
 
 
@@ -64,7 +67,8 @@ class GroupController extends Controller
             ->where('id', '!=', $group->id)
             ->get()
             ->take(3);
-        return view('group.show', compact('group', 'departure_date', 'arrival_date', 'relatedGroups', 'currentUser', 'users', 'currentUserGroup'));
+            $categories = Category::all();
+        return view('group.show', compact('group', 'departure_date', 'arrival_date', 'relatedGroups', 'currentUser', 'users', 'currentUserGroup', 'categories'));
     }
 
 

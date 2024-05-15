@@ -19,7 +19,9 @@
             </div><!-- /.container-fluid -->
         </div>
         <!-- /.content-header -->
-
+        {{-- <div class="alert alert danger">
+            {{ $exseption }}
+        </div> --}}
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">

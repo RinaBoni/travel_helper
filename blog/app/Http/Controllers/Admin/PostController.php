@@ -38,8 +38,10 @@ class PostController extends BasePostController
     public function index()
     {
         $posts = Post::all();
+        // $exseption = 'c';
 
         return view('admin.post.index', compact('posts'));
+        // return view('admin.post.index', compact('exseption'));
     }
 
     public function show(Post $post)
@@ -66,6 +68,9 @@ class PostController extends BasePostController
         $data = $request->validated();
 
         $post = $this->service->update($data, $post);
+        // $exseption = $this->service->update($data, $post);
+
+        // return view('admin.post.index', compact('exseption'));
 
         return view('admin.post.show', compact('post'));
     }

@@ -3,11 +3,11 @@
 @section('content')
     <main class="blog-post">
         <div class="container">
-            <h1 class="edica-page-title" data-aos="fade-up">{{ $post->title }}</h1>{{-- <p class="edica-blog-post-meta" data-aos="fade-up" data-aos-delay="200"> {{ $date->translatedFormat('F') }} {{ $date->day }}  {{$date->year}} • {{ $date->format('H:i') }} • {{ $post->comments->count }} Комментария</p> --}}
-            <p class="edica-blog-post-meta" data-aos="fade-up" data-aos-delay="200"> {{ $date->translatedFormat('F') }} {{ $date->day }}  {{$date->year}} • {{ $date->format('H:i') }} • {{ $post->comments->count() }} Комментария</p>
+            <h1 class="edica-page-title" >{{ $post->title }}</h1>{{-- <p class="edica-blog-post-meta"  data-aos-delay="200"> {{ $date->translatedFormat('F') }} {{ $date->day }}  {{$date->year}} • {{ $date->format('H:i') }} • {{ $post->comments->count }} Комментария</p> --}}
+            <p class="edica-blog-post-meta"  data-aos-delay="200"> {{ $date->translatedFormat('F') }} {{ $date->day }}  {{$date->year}} • {{ $date->format('H:i') }} • {{ $post->comments->count() }} Комментария</p>
 
 
-            {{-- <section class="blog-post-featured-img" data-aos="fade-up" data-aos-delay="300"> --}}
+            {{-- <section class="blog-post-featured-img"  data-aos-delay="300"> --}}
                 <div id="myCarousel" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                     <li data-target="#myCarousel" data-slide-to="0" class=""></li>
@@ -82,7 +82,7 @@
             </section>
             <section class="post-content">
                 <div class="row">
-                    <div class="col-lg-9 mx-auto" data-aos="fade-up">
+                    <div class="col-lg-9 mx-auto" >
                         {!! $post->content !!}
                     </div>
                 </div>
@@ -110,12 +110,14 @@
                             </div>
                         @endguest
 
-                        <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Acd2df954ba5a9c4ff790d75e48717239ca0788352d6769dabacc7bcbe8659b34&amp;width=100%25&amp;height=554&amp;lang=ru_RU&amp;scroll=true"></script>
-
+                        @if ($post->map)
+                            <script type="text/javascript" charset="utf-8" async src="{{ $post->map }}&amp;width=100%25&amp;height=554&amp;lang=ru_RU&amp;scroll=true"></script>
+                        @endif
                     </section>
+
                     @if ($relatedPosts->count() > 0 )
                         <section class="related-posts">
-                            <h2 class="section-title mb-4" data-aos="fade-up">Схожие посты</h2>
+                            <h2 class="section-title mb-4" >Схожие посты</h2>
                             <div class="row">
                                 @foreach ($relatedPosts as $relatedPosts)
                                     <div class="col-md-4" data-aos="fade-right" data-aos-delay="100">
@@ -127,31 +129,24 @@
                             </div>
                         </section>
                     @endif
-
-                    <div class="row">
-                        <div class="col-lg-9 mx-auto">
-                            @if ($relatedGroups->count() > 0 )
-                                <section class="related-posts">
-                                    <h2 class="section-title mb-4" data-aos="fade-up">Отправьтесь в поход!</h2>
-                                    <div class="row">
-                                        @foreach ($relatedGroups as $relatedGroup)
-                                            <div class="col-md-4 fetured-post blog-post" data-aos="fade-up">
-                                                <a href="{{ route('group.show', $relatedGroup->id) }}" class="blog-post-permalink">
-                                                    <h6 class="blog-post-title">{{ $relatedGroup->title }}</h6>
-                                                </a>
-                                                <div class="d-flex justify-content-between">
-                                                    <p class="blog-post-category">{{ $relatedGroup->post->title }}</p>
-                                                </div>
-                                            </div>
-                                        @endforeach
+                    @if ($relatedGroups->count() > 0 )
+                        <section class="related-posts">
+                            <h2 class="section-title mb-4" >Отправьтесь в поход!</h2>
+                            <div class="row">
+                                @foreach ($relatedGroups as $relatedGroup)
+                                    <div class="col-md-4" data-aos="fade-right" data-aos-delay="100">
+                                        <p class="post-category">{{ $relatedGroup->post->title }}</p>
+                                        <a href="{{ route('post.show', $relatedGroup->id) }}"><h5 class="post-title">{{ $relatedGroup->title }}</h5></a>
                                     </div>
-                                </section>
-                            @endif
-                        </div>
-                    </div>
+                                @endforeach
+                            </div>
+                        </section>
+                    @endif
+
+
 
                     <section class="related-posts">
-                            <h2 class="section-title mb-4" data-aos="fade-up">Или</h2>
+                            <h2 class="section-title mb-4" >Или</h2>
                             <div class="row">
 
                                     <div class="col-md-4" data-aos="fade-right" data-aos-delay="100">
@@ -168,7 +163,7 @@
 
 
                     <section class="comment-list mb-5">
-                        <h2 class="section-title mb-5" data-aos="fade-up">Комментарии ({{ $post->comments->count() }})</h2>
+                        <h2 class="section-title mb-5" >Комментарии ({{ $post->comments->count() }})</h2>
                         @foreach ($post->comments as $comment)
                             <div class="comment-text mb-3">
                                 <span class="username">
@@ -184,17 +179,17 @@
                     </section>
                     @auth()
                     <section class="comment-section">
-                        <h2 class="section-title mb-5" data-aos="fade-up">Оставить комментарий</h2>
+                        <h2 class="section-title mb-5" >Оставить комментарий</h2>
                         <form action="{{ route('post.comment.store', $post->id) }}" method="post">
                             @csrf
                             <div class="row">
-                                <div class="form-group col-12" data-aos="fade-up">
+                                <div class="form-group col-12" >
                                 <label for="comment" class="sr-only">Comment</label>
                                 <textarea name="message" id="comment" class="form-control" placeholder="Напишите комментарий!" rows="10"></textarea>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-12" data-aos="fade-up">
+                                <div class="col-12" >
                                     <input type="submit" value="Оставить комментарий" class="btn btn-warning">
                                 </div>
                             </div>

@@ -14,19 +14,17 @@ use Illuminate\Http\Request;
 class PostPageController extends Controller
 {
     //этот метод позволяет при обращении к контроллера автоматически будет использоваться этот метод
-    public function index(Category $category)
-    {
+    public function index()
+{
+    $posts = Post::paginate(6);
+    $randomPosts = Post::get()->random(4);
+    $likedPosts = Post::withCount('likedUsers')->orderBy('liked_users_count', 'DESC')->get()->take(4);
+    $role = 'person';
+    $groups = Group::all();
+    $categories = Category::all();
 
-        $posts = Post::paginate(6);
-        $randomPosts = Post::get()->random(4);
-        $likedPosts = Post::withCount('likedUsers')->orderBy('liked_users_count', 'DESC')->get()->take(4);
-        $role = 'person';
-
-        $categories = Category::all();
-        // dd( $categories);
-
-        return view('post.index', compact('posts', 'randomPosts', 'likedPosts', 'role', 'categories', ));
-    }
+    return view('post.index', compact('posts', 'randomPosts', 'likedPosts', 'role', 'categories', 'groups'));
+}
 
     public function post(Category $category)
     {
@@ -44,6 +42,7 @@ class PostPageController extends Controller
             ->get()
             ->take(3);
         $relatedGroups = $post->groups;
-        return view('post.show', compact('post', 'date', 'relatedPosts', 'relatedGroups', 'caruselImages'));
+        $categories = Category::all();
+        return view('post.show', compact('post', 'date', 'relatedPosts', 'relatedGroups', 'caruselImages', 'categories'));
     }
 }
