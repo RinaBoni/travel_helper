@@ -30,7 +30,7 @@
                     <div class="col-12">
 
 
-                        <form action="{{ route('admin.post.imagestore') }}" method="POST" class="submit-request-form clearfix" enctype="multipart/form-data">
+                        <form action="{{ route('admin.post.imagestore', $post->id) }}" method="POST" class="submit-request-form clearfix" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group w-50">
                                 <label for="exampleInputFile">Добавить </label>

@@ -75,11 +75,11 @@ class PostController extends BasePostController
         return view('admin.post.show', compact('post'));
     }
 
-    public function image()
+    public function image(Post $post)
     {
-        return view('admin.post.image');
+        return view('admin.post.image', compact('post'));
     }
-    public function imagestore(Request $request)
+    public function imagestore(Request $request, Post $post)
     {
         $request->validate([
             'image' => 'required|mimes:png,jpg,bmp,gif',

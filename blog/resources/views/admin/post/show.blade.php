@@ -18,6 +18,9 @@
             </button>
 
         </form>
+        <span class="input-group-append mb-2">
+            <a href="{{ route('admin.post.image', $post->id) }}"><button type="button" class="btn btn-primary">Добавить изображение</button></a>
+        </span>
         </div><!-- /.col -->
         <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
@@ -133,7 +136,7 @@
                             <td>{{ $post->telegram }}</td>
                         </tr>
                     @endif
-                    @if ($post->preview_image)
+                    {{-- @if ($post->preview_image)
                         <tr>
                             <td>привью</td>
                             <td><img src="{{asset('storage/' . $post->preview_image)}}" alt="preview_image" class="w-50"></td>
@@ -144,12 +147,34 @@
                             <td>главное изображение</td>
                             <td><img src="{{url('storage/' . $post->main_image)}}" alt="main_image" class="w-50"></td>
                         </tr>
-                    @endif
+                    @endif --}}
 
                 </tbody>
                 </table>
             </div>
             <!-- /.card-body -->
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="card card-primary">
+            <div class="card-header">
+                <h4 class="card-title">Изображения</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                <div class="col-sm-2">
+                    <a href="https://via.placeholder.com/1200/FFFFFF.png?text=1" data-toggle="lightbox" data-title="sample 1 - white" data-gallery="gallery">
+                    <img src="{{asset('storage/' . $post->preview_image)}}" class="img-fluid mb-2" alt="white sample">
+                    </a>
+                </div>
+                <div class="col-sm-2">
+                    <a href="https://via.placeholder.com/1200/FFFFFF.png?text=1" data-toggle="lightbox" data-title="sample 1 - white" data-gallery="gallery">
+                    <img src="{{url('storage/' . $post->main_image)}}" class="img-fluid mb-2" alt="white sample">
+                    </a>
+                </div>
+
+                </div>
+            </div>
             </div>
         </div>
 

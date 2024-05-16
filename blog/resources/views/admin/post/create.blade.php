@@ -272,7 +272,7 @@
 
 
 
-                            {{-- <form action="{{ route('admin.post.imagestore') }}" method="POST" class="submit-request-form clearfix" enctype="multipart/form-data">
+                            <form action="{{ route('admin.post.imagestore') }}" method="POST" class="submit-request-form clearfix" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group w-50">
                                     <label for="exampleInputFile">Добавить </label>
@@ -300,7 +300,7 @@
                                 <div class="info-box mb-3 bg-success">
                                     {{ session()->get('message') }}
                                 </div>
-                            @endif --}}
+                            @endif
 
 
 
