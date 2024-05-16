@@ -46,8 +46,8 @@
                             </div>
                             <div class="col-lg-9 mx-auto" data-aos="fade-up">
                                 <a href="{{ route('group.edit', $group->id) }}" class="btn btn-warning btn-lg"><i class="fa-solid fa-pen" style="color: #1b3f7e;"></i></a>
-                            </div>
-                            <div class="col-lg-9 mx-auto" data-aos="fade-up">
+                            {{-- </div>
+                            <div class="col-lg-9 mx-auto" data-aos="fade-up"> --}}
                                 <form action="{{ route('group.delete', $group->id) }}", method="POST">
                                     @csrf
                                     @method('DELETE')
@@ -56,42 +56,41 @@
                                     </button>
                                 </form>
                             </div>
-                        @endif
-
-
-                        @if ($currentUserGroup)
-                            <div class="col-lg-9 mx-auto" data-aos="fade-up">
-                                <div class="col-lg-9 mx-auto" data-aos="fade-up">
-                                    <form action="{{ route('group.leave', $group->id) }}", method="POST">
-                                        @csrf
-                                        <button type="submit" class="btn btn-warning btn-lg" data-aos="" data-aos-delay="300">
-                                            Покинуть группу
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
                         @else
-                            <div class="col-lg-9 mx-auto" data-aos="fade-up">
+                            @if ($currentUserGroup)
                                 <div class="col-lg-9 mx-auto" data-aos="fade-up">
-                                    <form action="{{ route('group.join', $group->id) }}", method="POST">
-                                        @csrf
-                                        <button type="submit" class="btn btn-warning btn-lg" data-aos="" data-aos-delay="300">
-                                            Присоединиться
-                                        </button>
-                                    </form>
+                                    <div class="col-lg-9 mx-auto" data-aos="fade-up">
+                                        <form action="{{ route('group.leave', $group->id) }}", method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-warning btn-lg" data-aos="" data-aos-delay="300">
+                                                Покинуть группу
+                                            </button>
+                                        </form>
+                                    </div>
                                 </div>
-                            </div>
+                            @else
+                                <div class="col-lg-9 mx-auto" data-aos="fade-up">
+                                    <div class="col-lg-9 mx-auto" data-aos="fade-up">
+                                        <form action="{{ route('group.join', $group->id) }}", method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-warning btn-lg" data-aos="" data-aos-delay="300">
+                                                Присоединиться
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            @endif
                         @endif
                     @endauth
                     @guest
-                    <div class="row">
+                    {{-- <div class="row"> --}}
                         <div class="col-lg-9 mx-auto">
                             <section class="related-posts">
-                                <h4 class="section-title mb-4" data-aos="fade-up">Войдите в аккаунт чтобы присоединиться</h4>
+                                <h5 data-aos="fade-up">Войдите в аккаунт чтобы присоединиться</h5>
                             </section></div></div>
                     @endguest
 
-                </div>
+                {{-- </div> --}}
             </section>
 
             <div class="row">

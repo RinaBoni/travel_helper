@@ -33,13 +33,16 @@
                                 <table class="table table-hover text-nowrap">
                                     <thead>
                                         <tr>
-                                            <th>Название</th>
+                                            <th>Достопримечательность</th>
+                                            <th>Комментарии</th>
                                             <th colspan="2" class="text-center">Действие</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($comments as $comment)
                                             <tr>
+
+                                                <td>{{ $comment->posts->title }}</td>
 
                                                 <td>{{ $comment->message }}</td>
 

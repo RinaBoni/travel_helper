@@ -18,8 +18,7 @@ class GroupController extends Controller
 {
     public function index(){
         $groups = Group::paginate(9);
-        $categories = Category::all();
-        return view('group.index', compact('groups', 'categories'));
+        return view('group.index', compact('groups'));
     }
 
 
@@ -27,8 +26,7 @@ class GroupController extends Controller
     public function create(){
 
         $posts = Post::all();
-        $categories = Category::all();
-        return view('group.create', compact('posts', 'categories'));
+        return view('group.create', compact('posts'));
     }
 
 
@@ -67,8 +65,7 @@ class GroupController extends Controller
             ->where('id', '!=', $group->id)
             ->get()
             ->take(3);
-            $categories = Category::all();
-        return view('group.show', compact('group', 'departure_date', 'arrival_date', 'relatedGroups', 'currentUser', 'users', 'currentUserGroup', 'categories'));
+        return view('group.show', compact('group', 'departure_date', 'arrival_date', 'relatedGroups', 'currentUser', 'users', 'currentUserGroup'));
     }
 
 

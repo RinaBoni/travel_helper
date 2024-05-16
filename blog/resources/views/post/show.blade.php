@@ -8,7 +8,7 @@
 
 
             {{-- <section class="blog-post-featured-img"  data-aos-delay="300"> --}}
-                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                {{-- <div id="myCarousel" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                     <li data-target="#myCarousel" data-slide-to="0" class=""></li>
                     <li data-target="#myCarousel" data-slide-to="1" class=""></li>
@@ -36,8 +36,9 @@
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                     </a>
-                </div>
+                </div> --}}
             {{-- </section> --}}
+
             <section class="blog-post-featured-img" data-aos="" data-aos-delay="">
                 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="5000">
                     <ol class="carousel-indicators">
@@ -90,6 +91,21 @@
             <div class="row">
                 <div class="col-lg-9 mx-auto">
                     <section class="py-3">
+                        @if ($post->vk)
+                            <a href="{{ $post->vk }}"> <i class="fa-brands fa-vk" style="color: #B197FC;"></i> </a>
+                        @endif
+                        @if ($post->youtube)
+                            <a href="{{ $post->youtube }}"><i class="fa-brands fa-youtube" style="color: #B197FC;"></i> </a>
+                        @endif
+                        @if ($post->telegram)
+                            <a href="{{ $post->telegram }}"><i class="fa-brands fa-telegram" style="color: #B197FC;"></i> </a>
+                        @endif
+                        @if ($post->odnoklassniki)
+                            <a href="{{ $post->odnoklassniki }}"><i class="fa-brands fa-odnoklassniki" style="color: #B197FC;"></i> </a>
+                        @endif
+                        @if ($post->website)
+                            <a href="{{ $post->website }}"><i class="fa-solid fa-globe" style="color: #B197FC;"></i> </a>
+                        @endif
                         @auth
                             <form action="{{ route('post.like.store', $post->id) }}" method="post">
                                 @csrf

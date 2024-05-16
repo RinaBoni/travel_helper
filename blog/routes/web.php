@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Category\IndexController as CategoryIndexController;
+use App\Http\Controllers\District\DistrictController;
 use App\Http\Controllers\Group\GroupController;
 use App\Http\Controllers\Main\IndexController;
 use App\Http\Controllers\Person\CommentController;
@@ -98,6 +99,21 @@ Route::group(['namespace' => 'Category', 'prefix' => 'categories'], function(){
 
 
 
+// Route::group(['namespace' => 'District', 'prefix' => 'districts'], function(){
+//     Route::get('/', [DistrictController::class, 'index'])->name('district.index');
+
+//     Route::group(['namespace' => 'Post', 'prefix' => '{district}/posts'], function(){
+//         Route::get('/',[DistrictController::class, 'post'])->name('district.post.index');
+//     });
+// });
+
+Route::group(['prefix' => 'districts'], function() {
+    Route::get('/', [DistrictController::class, 'index'])->name('district.index');
+
+    Route::get('{district}/posts', [DistrictController::class, 'post'])->name('district.post.index');
+});
+
+
 
 
 Route::group(['namespace' => 'Group', 'prefix' => 'group'], function(){
@@ -145,8 +161,8 @@ Route::group(['namespace' => 'Person', 'prefix' => 'person', 'middleware' => ['a
     Route::group(['namespace' => 'Personal', 'prefix' => 'personal'], function(){
         Route::get('/', [PersonalController::class, 'index'])->name('person.personal.index');
         Route::get('/{personal}/edit', [PersonalController::class, 'edit'])->name('person.personal.edit');
-        Route::patch('/{personal}', [PersonalController::class, 'update'])->name('person.personal.update');
-        Route::delete('/{personal}', [PersonalController::class, 'delete'])->name('person.personal.delete');
+        Route::patch('/', [PersonalController::class, 'update'])->name('person.personal.update');
+        // Route::delete('/{personal}', [PersonalController::class, 'delete'])->name('person.personal.delete');
     });
 });
 

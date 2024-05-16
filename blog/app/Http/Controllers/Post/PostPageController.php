@@ -21,16 +21,14 @@ class PostPageController extends Controller
     $likedPosts = Post::withCount('likedUsers')->orderBy('liked_users_count', 'DESC')->get()->take(4);
     $role = 'person';
     $groups = Group::all();
-    $categories = Category::all();
 
-    return view('post.index', compact('posts', 'randomPosts', 'likedPosts', 'role', 'categories', 'groups'));
+    return view('post.index', compact('posts', 'randomPosts', 'likedPosts', 'role', 'groups'));
 }
 
     public function post(Category $category)
     {
         $posts = $category->posts()->paginate(6);
-        $categories = $category;
-        return view('category.post.index', compact('posts', 'categories'));
+        return view('category.post.index', compact('posts'));
     }
 
     public function show(Post $post){
@@ -42,7 +40,6 @@ class PostPageController extends Controller
             ->get()
             ->take(3);
         $relatedGroups = $post->groups;
-        $categories = Category::all();
-        return view('post.show', compact('post', 'date', 'relatedPosts', 'relatedGroups', 'caruselImages', 'categories'));
+        return view('post.show', compact('post', 'date', 'relatedPosts', 'relatedGroups', 'caruselImages'));
     }
 }

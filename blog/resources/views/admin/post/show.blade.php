@@ -51,6 +51,101 @@
                         <td>Название</td>
                         <td>{{$post->title}}</td>
                     </tr>
+                    <tr>
+                        <td>Категория</td>
+                        <td>{{ $post->category_id }}</td>
+                    </tr>
+                    {{-- <tr>
+                        <td>Тэги</td>
+                        <td>{{ $post-> }}</td>
+                    </tr> --}}
+                    <tr>
+                        <td>Текст</td>
+                        <td>{{ $post->content }}</td>
+                    </tr>
+                    <tr>
+                        <td>Ссылка на Яндекс.Карту</td>
+                        <td>{{ $post->map }}</td>
+                    </tr>
+                    <tr>
+                        <td>Страна</td>
+                        <td>{{ $post->country }}</td>
+                    </tr>
+                    <tr>
+                        <td>Регион</td>
+                        <td>{{ $post->region }}</td>
+                    </tr>
+                    <tr>
+                        <td>Район</td>
+                        <td>{{ $post->district }}</td>
+                    </tr>
+                    @if ($post->city)
+                        <tr>
+                            <td>Город</td>
+                            <td>{{ $post->city }}</td>
+                        </tr>
+                    @endif
+                    @if ($post->street)
+                        <tr>
+                            <td>Улица</td>
+                            <td>{{ $post->street }}</td>
+                        </tr>
+                    @endif
+                    @if ($post->building)
+                        <tr>
+                            <td>Здание</td>
+                            <td>{{ $post->building }}</td>
+                        </tr>
+                    @endif
+                    @if ($post->coordinates)
+                        <tr>
+                            <td>Координаты</td>
+                            <td>{{ $post->coordinates }}</td>
+                        </tr>
+                    @endif
+                    @if ($post->website)
+                        <tr>
+                            <td>Сайт</td>
+                            <td>{{ $post->website }}</td>
+                        </tr>
+                    @endif
+                    @if ($post->youtube)
+                        <tr>
+                            <td>YouTube</td>
+                            <td>{{ $post->youtube }}</td>
+                        </tr>
+                    @endif
+                    @if ($post->vk)
+                        <tr>
+                            <td>вконтакте</td>
+                            <td>{{ $post->vk }}</td>
+                        </tr>
+                    @endif
+                    @if ($post->odnoklassniki)
+                        <tr>
+                            <td>одноклассники</td>
+                            <td>{{ $post->odnoklassniki }}</td>
+                        </tr>
+                    @endif
+                    @if ($post->telegram)
+                        <tr>
+                            <td>Telegram</td>
+                            <td>{{ $post->telegram }}</td>
+                        </tr>
+                    @endif
+                    @if ($post->preview_image)
+                        <tr>
+                            <td>привью</td>
+                            <td><img src="{{asset('storage/' . $post->preview_image)}}" alt="preview_image" class="w-50"></td>
+                        </tr>
+                    @endif
+                    @if ($post->main_image)
+                        <tr>
+                            <td>главное изображение</td>
+                            <td><img src="{{url('storage/' . $post->main_image)}}" alt="main_image" class="w-50"></td>
+                        </tr>
+                    @endif
+
                 </tbody>
                 </table>
             </div>
