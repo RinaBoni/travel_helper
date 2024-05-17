@@ -5,6 +5,7 @@
         <div class="container">
             <h1 class="edica-page-title" data-aos="fade-up">{{ $district }}</h1>
             <section class="featured-posts-section">
+                <h3 class="widget-title">Достопримечательности</h3>
                 <div class="row">
                     @foreach ($posts as $post)
                         <div class="col-md-4 fetured-post blog-post" data-aos="fade-up">
@@ -47,6 +48,21 @@
                     </div>
                 </div>
             </section>
+            @if ($groups->count() > 0)
+                <section class="related-posts">
+                    <h2 class="section-title mb-4" >Группы в этот район</h2>
+                    <div class="row">
+                        @foreach ($groups as $relatedGroup)
+                        <div class="col-md-4" data-aos="fade-right" data-aos-delay="100">
+                            <p class="post-category">{{ $relatedGroup->post->title }}</p>
+                            <a href="{{ route('post.show', $relatedGroup->id) }}" class="blog-post-permalink">
+                                <h6 class="blog-post-title">{{ $relatedGroup->title }}</h6>
+                            </a>
+                        </div>
+                        @endforeach
+                    </div>
+                </section>
+            @endif
         </div>
     </main>
 
