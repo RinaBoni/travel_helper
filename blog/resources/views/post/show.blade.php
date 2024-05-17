@@ -124,26 +124,32 @@
                                     </div>
                                 @endforeach
                             </div>
-                        </section>
-                    @endif
-
-
-
-                    <section class="related-posts">
-                            <h2 class="section-title mb-4" >Или</h2>
+                        {{-- </section>
+                        <section class="related-posts"> --}}
+                            <h3 class="section-title mb-4" >Или</h3>
                             <div class="row">
-
-                                    <div class="col-md-4" data-aos="fade-right" data-aos-delay="100">
-                                        <a href="{{ route('group.create') }}"><h4 class="post-title">Создайте группу</h4></a>
-
-                                    </div>
-                                    <div class="col-md-4" data-aos="fade-right" data-aos-delay="100">
-                                        <a href="{{ route('group.index', $post->id) }}"><h4 class="post-title">Все группы</h4></a>
-                                    </div>
-
+                                <div class="col-md-4" data-aos="fade-right" data-aos-delay="100">
+                                    <a href="{{ route('group.create') }}"><h4 class="post-title">Создайте группу</h4></a>
+                                </div>
+                                <div class="col-md-4" data-aos="fade-right" data-aos-delay="100">
+                                    <a href="{{ route('group.index', $post->id) }}"><h4 class="post-title">Все группы</h4></a>
+                                </div>
+                            </div>
+                        </section>
+                        @else
+                        <section class="related-posts">
+                            <h2 class="section-title mb-4" >Отправьтесь в поход!</h2>
+                            <div class="row">
+                                <div class="col-md-4" data-aos="fade-right" data-aos-delay="100">
+                                    <a href="{{ route('group.create') }}"><h4 class="post-title">Создайте группу</h4></a>
+                                </div>
+                                <div class="col-md-4" data-aos="fade-right" data-aos-delay="100">
+                                    <a href="{{ route('group.index', $post->id) }}"><h4 class="post-title">Все группы</h4></a>
+                                </div>
                             </div>
                         </section>
 
+                    @endif
 
 
                     <section class="comment-list mb-5">

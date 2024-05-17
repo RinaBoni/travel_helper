@@ -16,9 +16,9 @@ class PostPageController extends Controller
     //этот метод позволяет при обращении к контроллера автоматически будет использоваться этот метод
     public function index()
 {
-    $posts = Post::paginate(6);
+    $posts = Post::paginate(9);
     $randomPosts = Post::get()->random(4);
-    $likedPosts = Post::withCount('likedUsers')->orderBy('liked_users_count', 'DESC')->get()->take(4);
+    $likedPosts = Post::withCount('likedUsers')->orderBy('liked_users_count', 'DESC')->get()->take(3);
     $role = 'person';
     $groups = Group::all();
 

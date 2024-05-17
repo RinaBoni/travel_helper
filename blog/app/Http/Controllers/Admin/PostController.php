@@ -8,6 +8,7 @@ use App\Http\Requests\Admin\Post\UpdateRequest;
 use App\Models\Category;
 use App\Models\Image;
 use App\Models\Post;
+use App\Models\PostTag;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -46,8 +47,10 @@ class PostController extends BasePostController
 
     public function show(Post $post)
     {
+        $tags = $post->tags->pluck('title');
+        // dd($tags);
         $images = Image::where('post_id', $post->id)->get();
-        return view('admin.post.show', compact('post', 'images'));
+        return view('admin.post.show', compact('post', 'images', 'tags'));
     }
 
     public function store(StoreRequest $request)

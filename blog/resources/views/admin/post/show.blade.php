@@ -55,10 +55,20 @@
                         <td>Категория</td>
                         <td>{{ $post->category_id }}</td>
                     </tr>
-                    {{-- <tr>
+                    <tr>
                         <td>Тэги</td>
-                        <td>{{ $post-> }}</td>
-                    </tr> --}}
+                        <td>
+                            @if ($tags->count() > 1)
+                                @foreach ($tags as $tag)
+                                    {{ $tag}},
+                                @endforeach
+                            @else
+                                @foreach ($tags as $tag)
+                                    {{ $tag}}
+                                @endforeach
+                            @endif
+                        </td>
+                    </tr>
                     <tr>
                         <td>Текст</td>
                         <td>{{ $post->content }}</td>

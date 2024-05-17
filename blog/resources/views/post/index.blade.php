@@ -7,7 +7,7 @@
             <section class="featured-posts-section">
                 <div class="row">
 
-                @foreach ($posts as $post)
+                    @foreach ($posts as $post)
                         <div class="col-md-4 fetured-post blog-post" data-aos="fade-up">
                             <div class="blog-post-thumbnail-wrapper">
                                 <a href="{{ route('post.show', $post->id) }}" class="blog-post-permalink">
@@ -48,80 +48,65 @@
                     </div>
                 </div>
             </section>
+
+
+            <section class="featured-posts-section">
+                <h3 class="widget-title">Популярные посты</h3>
+                <div class="row">
+
+                    @foreach ($likedPosts as $post)
+                        <div class="col-md-4 fetured-post blog-post" data-aos="fade-up">
+                            <div class="blog-post-thumbnail-wrapper">
+                                <a href="{{ route('post.show', $post->id) }}" class="blog-post-permalink">
+                                    <img src="{{ 'storage/' . $post->preview_image}}" alt="blog post">
+                                </a>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <p class="blog-post-category">{{ $post->category->title }}</p>
+                                @auth
+                                    <form action="{{ route('post.like.store', $post->id) }}" method="post">
+                                        @csrf
+                                        <span>{{ $post->liked_users_count }}</span>
+                                        <button type="submit" class="border-0 bg-transparent">
+                                                @if (auth()->user()->likedPosts->contains($post->id))
+                                                    <i class="fa fa-solid fa-heart" style="color: #63E6BE;"></i>
+                                                @else
+                                                    <i class="fa fa-regular fa-heart" style="color: #B197FC;"></i>
+                                                @endif
+                                            </button>
+                                    </form>
+                                @endauth
+                                @guest
+                                    <div>
+                                        <span>{{ $post->liked_users_count }}</span>
+                                        <i class="fa fa-regular fa-heart" style="color: #B197FC;"></i>
+                                    </div>
+                                @endguest
+                            </div>
+                            <a href="{{ route('post.show', $post->id) }}" class="blog-post-permalink">
+                                <h6 class="blog-post-title">{{ $post->title }}</h6>
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
+            </section>
+
+
+
             <div class="row">
                 <div class="col-md-8">
-                    <section>
-                        <div class="row blog-post-row">
-                            @foreach ($randomPosts as $post)
-                                <div class="col-md-6 blog-post" data-aos="fade-up">
-                                    <div class="blog-post-thumbnail-wrapper">
-                                        <a href="{{ route('post.show', $post->id) }}" class="blog-post-permalink">
-                                            <img src="{{ 'storage/' . $post->preview_image}}" alt="blog post">
+                    <section class="related-posts">
+                            <h2 class="section-title mb-4" >Отправьтесь в поход!</h2>
+                            <div class="row">
+                                @foreach ($groups as $relatedGroup)
+                                    <div class="col-md-4" data-aos="fade-right" data-aos-delay="100">
+                                        <p class="post-category">{{ $relatedGroup->post->title }}</p>
+                                        <a href="{{ route('post.show', $relatedGroup->id) }}" class="blog-post-permalink">
+                                            <h6 class="blog-post-title">{{ $relatedGroup->title }}</h6>
                                         </a>
                                     </div>
-                                    <div class="d-flex justify-content-between">
-                                        <p class="blog-post-category">{{ $post->category->title }}</p>
-                                        @auth
-                                            <form action="{{ route('post.like.store', $post->id) }}" method="post">
-                                                @csrf
-                                                <span>{{ $post->liked_users_count }}</span>
-                                                <button type="submit" class="border-0 bg-transparent">
-                                                        @if (auth()->user()->likedPosts->contains($post->id))
-                                                            <i class="fa fa-solid fa-heart" style="color: #63E6BE;"></i>
-                                                        @else
-                                                            <i class="fa fa-regular fa-heart" style="color: #B197FC;"></i>
-                                                        @endif
-                                                    </button>
-                                            </form>
-                                        @endauth
-                                        @guest
-                                            <div>
-                                                <span>{{ $post->liked_users_count }}</span>
-                                                <i class="fa-regular fa-heart" style="color: #B197FC;"></i>
-                                            </div>
-                                        @endguest
-                                    </div>
-                                    <a href="{{ route('post.show', $post->id) }}" class="blog-post-permalink">
-                                        <h6 class="blog-post-title">{{ $post->title }}</h6>
-                                    </a>
-                                </div>
-                            @endforeach
-                        </div>
-
-                    </section>
-                </div>
-                <div class="col-md-4 sidebar" data-aos="fade-left">
-                    <div class="widget widget-post-list">
-                        <h5 class="widget-title">Популярные посты</h5>
-                        <ul class="post-list">
-                            @foreach ($likedPosts as $post)
-                                <li class="post">
-                                    <a href="{{ route('post.show', $post->id) }}" class="post-permalink media">
-                                        <img src="{{ 'storage/' . $post->preview_image}}" alt="blog post">
-                                        <div class="media-body">
-                                            <h6 class="post-title">{{ $post->title }}</h6>
-                                        </div>
-                                    </a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    <div class="widget widget-post-list">
-                        <h5 class="widget-title">Группы</h5>
-                        <ul class="post-list">
-                            @foreach ($groups as $group)
-                                <li class="post">
-                                    <a href="{{ route('group.show', $group->id) }}" class="post-permalink media">
-                                        {{-- <img src="{{ 'storage/' . $post->preview_image}}" alt="blog post"> --}}
-                                        <div class="media-body">
-                                            <h5 class="post-title">{{ $group->title }}</h5>
-                                            <h6 class="post-title">{{ $group->post->title }}</h6>
-                                        </div>
-                                    </a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
+                                @endforeach
+                            </div>
                 </div>
             </div>
         </div>
