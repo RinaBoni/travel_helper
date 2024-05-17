@@ -44,8 +44,8 @@
 
             <li class="nav-item">
                 <a href="{{ route('post.index') }}" class="nav-link">
-                    <i class="nav-icon fa-solid fa-house"></i>
-                    <p>Вернуться на главную</p>
+                    <i class="nav-icon fa-solid fa-arrow-left"></i>
+                    <p>Вернуться к достопримечательностям</p>
                 </a>
             </li>
 

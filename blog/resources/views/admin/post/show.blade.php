@@ -58,7 +58,7 @@
                     <tr>
                         <td>Тэги</td>
                         <td>
-                            @if ($tags->count() > 1)
+                            {{-- @if ($tags->count() > 1)
                                 @foreach ($tags as $tag)
                                     {{ $tag}},
                                 @endforeach
@@ -66,12 +66,17 @@
                                 @foreach ($tags as $tag)
                                     {{ $tag}}
                                 @endforeach
-                            @endif
+                            @endif --}}
+                            {{-- <ul> --}}
+                                @foreach($post->tags as $tag)
+                                    <li>{{ $tag->title }}</li>
+                                @endforeach
+                            {{-- </ul> --}}
                         </td>
                     </tr>
                     <tr>
                         <td>Текст</td>
-                        <td>{{ $post->content }}</td>
+                        <td>{!! $post->content !!}</td>
                     </tr>
                     <tr>
                         <td>Ссылка на Яндекс.Карту</td>

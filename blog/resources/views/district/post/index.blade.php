@@ -52,11 +52,11 @@
                 <section class="related-posts">
                     <h2 class="section-title mb-4" >Группы в этот район</h2>
                     <div class="row">
-                        @foreach ($groups as $relatedGroup)
+                        @foreach ($groups as $group)
                         <div class="col-md-4" data-aos="fade-right" data-aos-delay="100">
-                            <p class="post-category">{{ $relatedGroup->post->title }}</p>
-                            <a href="{{ route('post.show', $relatedGroup->id) }}" class="blog-post-permalink">
-                                <h6 class="blog-post-title">{{ $relatedGroup->title }}</h6>
+                            <p class="post-category">{{ $group->post->title }}</p>
+                            <a href="{{ route('post.show', $group->id) }}" class="blog-post-permalink">
+                                <h6 class="blog-post-title">{{ $group->title }}</h6>
                             </a>
                         </div>
                         @endforeach

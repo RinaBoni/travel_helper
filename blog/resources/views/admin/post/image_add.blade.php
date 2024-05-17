@@ -14,6 +14,7 @@
                             <li class="breadcrumb-item"><a href="{{ route('admin.main.index') }}">Главная</a></li>
                             <li class="breadcrumb-item"><a href="{{ route('admin.post.index') }}">Достопримечательности</a></li>
                             <li class="breadcrumb-item"><a href="{{ route('admin.post.show', $post->id) }}">{{$post->title}}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.image.show', $post->id) }}">Изображения</a></li>
                             <li class="breadcrumb-item active">Добавление изображения</li>
                         </ol>
                     </div><!-- /.col -->
@@ -52,6 +53,11 @@
                                 <input type="submit" class="btn btn-primary" value="Добавить">
                             </div>
                         </form>
+                        @if (session()->has('message'))
+                                <div class="info-box mb-3 bg-success">
+                                    {{ session()->get('message') }}
+                                </div>
+                        @endif
                     </div>
 
                 </div>

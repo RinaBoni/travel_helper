@@ -53,14 +53,15 @@
                                             {{-- <form class="m-0 mr-2" action="{{ route('admin.image.delete', $imagee->id, $post->id) }}", method="POST"> --}}
                                                 @csrf
                                                 <div class="form-check">
-                                                    <input type="checkbox" class="form-check-input" id="title_image">
-                                                    <label class="form-check-label" for="title_image">Титульное изображение</label>
+                                                    {{-- <input type="checkbox" class="form-check-input" id="title_image">
+                                                    <label class="form-check-label" for="title_image">Титульное изображение</label> --}}
                                                 </div>
                                             </form>
                                     </div>
                                 @endforeach
                                 <div class="col-sm-2">
                                     <img src="{{url('storage/' . $post->preview_image)}}" class="img-fluid mb-2" alt="white sample">
+                                    <label class="form-check-label" >Титульное изображение</label>
                                 </div>
 
                             </div>

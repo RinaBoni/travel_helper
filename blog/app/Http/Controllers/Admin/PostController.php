@@ -47,10 +47,11 @@ class PostController extends BasePostController
 
     public function show(Post $post)
     {
-        $tags = $post->tags->pluck('title');
+        // $tags = $post->tags->pluck('title');
         // dd($tags);
         $images = Image::where('post_id', $post->id)->get();
-        return view('admin.post.show', compact('post', 'images', 'tags'));
+        return view('admin.post.show', compact('post', 'images'));
+        // return view('admin.post.show', compact('post', 'images', 'tags'));
     }
 
     public function store(StoreRequest $request)

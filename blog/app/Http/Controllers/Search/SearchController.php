@@ -1,21 +1,25 @@
 <?php
 
-namespace App\Http\Controllers\Post;
+namespace App\Http\Controllers\Search;
 
+use App\Filters\PostFilter;
+use App\Filters\GroupFilter;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Group;
-use App\Models\Image;
 use App\Models\Post;
-use App\Models\User;
-use Carbon\Carbon;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
     //этот метод позволяет при обращении к контроллера автоматически будет использоваться этот метод
-    public function index(){
-    return view('post.search');
+    public function index(PostFilter $postFilter, GroupFilter $groupFilter){
+        $tagss = Tag::all();
+        $categories = Category::all();
+        $posts = Post::filter($postFilter)->paginate(9);
+        $groups = Group::filter($groupFilter)->get();;
+        return view('post.search', compact('tagss', 'posts', 'groups', 'categories'));
     }
 
     public function post(Request $request)

@@ -20,6 +20,7 @@ use App\Http\Controllers\Person\PersonalController;
 use App\Http\Controllers\Person\PersonController;
 use App\Http\Controllers\Post\Comment\StoreController;
 use App\Http\Controllers\Post\PostPageController;
+use App\Http\Controllers\Search\SearchController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -84,10 +85,14 @@ Route::group(['namespace' => 'Post', 'prefix' => 'posts'], function(){
     Route::group(['namespace' => 'Like', 'prefix' => '{post}/likes'], function(){
         Route::post('/',[StoreController::class, 'like'])->name('post.like.store');
     });
+
+
 });
 
 
-
+Route::group(['namespace' => 'Search', 'prefix' => 'search'], function(){
+    Route::get('/',[SearchController::class, 'index'])->name('search.index');
+});
 
 
 Route::group(['namespace' => 'Category', 'prefix' => 'categories'], function(){
