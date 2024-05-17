@@ -272,35 +272,7 @@
 
 
 
-                            <form action="{{ route('admin.post.imagestore') }}" method="POST" class="submit-request-form clearfix" enctype="multipart/form-data">
-                                @csrf
-                                <div class="form-group w-50">
-                                    <label for="exampleInputFile">Добавить </label>
-                                    <div class="input-group">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" name="image">
-                                            <label class="custom-file-label">Выберете изображение</label>
-                                        </div>
-                                        <div class="input-group-append">
-                                            <span class="input-group-text">Загрузка</span>
-                                        </div>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="title_image">
-                                        <label class="form-check-label" for="title_image">Титульное изображение</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <input type="submit" class="btn btn-primary" value="Добавить изображение">
-                                </div>
-                            </form>
 
-
-                            @if (session()->has('message'))
-                                <div class="info-box mb-3 bg-success">
-                                    {{ session()->get('message') }}
-                                </div>
-                            @endif
 
 
 

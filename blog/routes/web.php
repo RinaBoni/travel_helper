@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
 
 use App\Http\Controllers\Admin\AdminIndexController;
+use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\UserController;
@@ -171,18 +172,22 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['aut
     Route::group(['namespace' => 'Post', 'prefix' => 'posts'], function(){
         Route::get('/', [PostController::class, 'index'])->name('admin.post.index');
         Route::get('/create', [PostController::class, 'create'])->name('admin.post.create');
-        // Route::get('/image', [PostController::class, 'image'])->name('admin.post.image');
-        // Route::post('/image', [PostController::class, 'imagestore'])->name('admin.post.imagestore');
         Route::post('/', [PostController::class, 'store'])->name('admin.post.store');
         Route::get('/{post}', [PostController::class, 'show'])->name('admin.post.show');
         Route::get('/{post}/edit', [PostController::class, 'edit'])->name('admin.post.edit');
-        Route::get('/{post}/image', [PostController::class, 'image'])->name('admin.post.image');
-        Route::post('/{post}/image', [PostController::class, 'imagestore'])->name('admin.post.imagestore');
         Route::patch('/{post}', [PostController::class, 'update'])->name('admin.post.update');
         Route::delete('/{post}', [PostController::class, 'delete'])->name('admin.post.delete');
-
-
+        // Route::delete('/{post}', [ImageController::class, 'delete'])->name('admin.image.delete');
+        Route::get('/{post}/images', [ImageController::class, 'show'])->name('admin.image.show');
+        Route::get('/{post}/image', [ImageController::class, 'image'])->name('admin.image.image');
+        Route::post('/{post}/image', [ImageController::class, 'imagestore'])->name('admin.image.imagestore');
+        Route::delete('/{post}/images/{image}', [ImageController::class, 'delete'])->name('admin.image.delete');
+        Route::patch('/{post}/images/{image}', [ImageController::class, 'maketitle'])->name('admin.image.maketitle');
+        // Route::group(['namespace' => 'Image', 'prefix' => 'images'], function(){
+        //     Route::get('/{post}/{image}', [ImageController::class, 'show'])->name('admin.image.show');
+        // });
     });
+    // Route::delete('/{post}', [PostController::class, 'imagedelete'])->name('admin.post.imagedelete');
 
 
 

@@ -33,7 +33,7 @@ class PostPageController extends Controller
 
     public function show(Post $post){
 
-        $caruselImages = Image::all();
+        $caruselImages = Image::where('post_id', $post->id)->get();
         $date = Carbon::parse($post->created_at);
         $relatedPosts = Post::where('category_id', $post->category_id)
             ->where('id', '!=', $post->id)

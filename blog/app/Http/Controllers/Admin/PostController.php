@@ -46,7 +46,8 @@ class PostController extends BasePostController
 
     public function show(Post $post)
     {
-        return view('admin.post.show', compact('post'));
+        $images = Image::where('post_id', $post->id)->get();
+        return view('admin.post.show', compact('post', 'images'));
     }
 
     public function store(StoreRequest $request)
@@ -73,24 +74,5 @@ class PostController extends BasePostController
         // return view('admin.post.index', compact('exseption'));
 
         return view('admin.post.show', compact('post'));
-    }
-
-    public function image(Post $post)
-    {
-        return view('admin.post.image', compact('post'));
-    }
-    public function imagestore(Request $request, Post $post)
-    {
-        $request->validate([
-            'image' => 'required|mimes:png,jpg,bmp,gif',
-        ]);
-        $uploadImage = $request->file('image');
-        $storeImage = Storage::disk('public')->put('/images',$uploadImage);
-
-        Image::firstOrCreate([
-            'image' => $storeImage,
-            'title_image' => false]);
-
-        return redirect()->back()->with('message', 'image uploaded successfully');
     }
 }

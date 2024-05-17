@@ -13,4 +13,8 @@ class Image extends Model
     //для возможности изменять таблицу
     protected $guarded = false;
 
+    public function post(){
+        return $this->belongsTo(Post::class, 'post_id', 'id');
+    }
+
 }

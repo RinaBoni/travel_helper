@@ -16,16 +16,13 @@
             <button type="submit" class="border-0 bg-transparent">
                 <i class="fa-solid fa-trash-can" style="color: #1b3f7e;"></i>
             </button>
-
         </form>
-        <span class="input-group-append mb-2">
-            <a href="{{ route('admin.post.image', $post->id) }}"><button type="button" class="btn btn-primary">Добавить изображение</button></a>
-        </span>
+
         </div><!-- /.col -->
         <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="{{ route('admin.main.index') }}">Главная</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('admin.post.index') }}">Посты</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('admin.post.index') }}">Достопримечательности</a></li>
             <li class="breadcrumb-item active">{{$post->title}}</li>
         </ol>
         </div><!-- /.col -->
@@ -159,25 +156,22 @@
             <div class="card card-primary">
             <div class="card-header">
                 <h4 class="card-title">Изображения</h4>
+                <a class="m-0 mr-2" href="{{ route('admin.image.show', $post->id) }}"><i class="fa-solid fa-pen" style="color: #fcfcfc;"></i></a>
             </div>
             <div class="card-body">
                 <div class="row">
+                    @foreach ($images as $imagee)
+                        <div class="col-sm-2">
+                                <img src="{{asset('storage/' . $imagee->image)}}" class="img-fluid mb-2" alt="white sample">
+                        </div>
+                    @endforeach
                 <div class="col-sm-2">
-                    <a href="https://via.placeholder.com/1200/FFFFFF.png?text=1" data-toggle="lightbox" data-title="sample 1 - white" data-gallery="gallery">
-                    <img src="{{asset('storage/' . $post->preview_image)}}" class="img-fluid mb-2" alt="white sample">
-                    </a>
+                    <img src="{{url('storage/' . $post->preview_image)}}" class="img-fluid mb-2" alt="white sample">
                 </div>
-                <div class="col-sm-2">
-                    <a href="https://via.placeholder.com/1200/FFFFFF.png?text=1" data-toggle="lightbox" data-title="sample 1 - white" data-gallery="gallery">
-                    <img src="{{url('storage/' . $post->main_image)}}" class="img-fluid mb-2" alt="white sample">
-                    </a>
-                </div>
-
                 </div>
             </div>
             </div>
         </div>
-
     </div>
     <!-- /.row -->
     </div><!-- /.container-fluid -->
