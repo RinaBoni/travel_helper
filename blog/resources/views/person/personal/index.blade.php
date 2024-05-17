@@ -37,7 +37,7 @@
                             <label for="exampleInputFile">Фотография</label>
                             {{-- <label for="exampleInputFile">{{ $user->user_image }}</label> --}}
                             <img src="{{ asset('storage/' . $user->user_image) }}" alt="featured image" class="w-100">
-                            {{-- <div class="input-group">
+                            <div class="input-group">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" name="user_image">
                                     <label class="custom-file-label">Выберете изображение</label>
@@ -48,43 +48,43 @@
                             </div>
                             @error('user_image')
                                 <div class="text-danger">{{ $message }}</div>
-                            @enderror --}}
+                            @enderror
                         </div>
 
                         <div class="form-group">
                             <label>Имя</label>
-                            <label>{{ $user->name }}</label>
-                            {{-- <input type="text" class="form-control" name="name" placeholder="Имя" value="{{ $user->name }}">
+                            {{-- <label>{{ $user->name }}</label> --}}
+                            <input type="text" class="form-control" name="name" placeholder="Имя" value="{{ $user->name }}">
                             @error('name')
                                 <div class="text-danger">{{ $message }}</div>
-                            @enderror --}}
+                            @enderror
                         </div>
 
                         <div class="form-group">
                             <label>Фамилия</label>
-                            <label>{{ $user->lastname }}</label>
-                            {{-- <input type="text" class="form-control" name="lastname" placeholder="Фамилия" value="{{ $user->lastname }}">
+                            {{-- <label>{{ $user->lastname }}</label> --}}
+                            <input type="text" class="form-control" name="lastname" placeholder="Фамилия" value="{{ $user->lastname }}">
                             @error('lastname')
                                 <div class="text-danger">{{ $message }}</div>
-                            @enderror --}}
+                            @enderror
                         </div>
 
                         <div class="form-group">
                             <label>Номер телефона</label>
-                            <label>{{ $user->phone_number }}</label>
-                            {{-- <input type="text" class="form-control" name="phone_number" placeholder="Номер телефона" value="{{ $user->phone_number }}">
+                            {{-- <label>{{ $user->phone_number }}</label> --}}
+                            <input type="text" class="form-control" name="phone_number" placeholder="Номер телефона" value="{{ $user->phone_number }}">
                             @error('phone_number')
                                 <div class="text-danger">{{ $message }}</div>
-                            @enderror --}}
+                            @enderror
                         </div>
 
                         <div class="form-group">
                             <label>Почта</label>
-                            <label>{{ $user->email }}</label>
-                            {{-- <input type="text" class="form-control" name="email" placeholder="Почта" value="{{ $user->email }}">
+                            {{-- <label>{{ $user->email }}</label> --}}
+                            <input type="text" class="form-control" name="email" placeholder="Почта" value="{{ $user->email }}">
                             @error('email')
                                 <div class="text-danger">{{ $message }}</div>
-                            @enderror --}}
+                            @enderror
                         </div>
 
                         <div class="form-check">
@@ -101,13 +101,17 @@
                             <input type="hidden" name="user_id" value="{{ $user->id }}">
                         </div>
 
+                        {{-- <span class="input-group-append mb-2">
+                            <a href="{{ route('person.personal.edit', $user->id) }}"><button type="button" class="btn btn-primary">Изменить</button></a>
+                        </span> --}}
+
                         <div class="form-group">
-                            <input type="submit" class="btn btn-primary" value="Обновить">
+                            <input type="submit" class="btn btn-primary" value="Изменить">
                         </div>
                     </form>
 
 
-                    <form class="" action="{{ route('admin.user.delete', $user->id) }}", method="POST">
+                    <form class="" action="{{ route('person.personal.delete', $user->id) }}", method="POST">
                         @csrf
                         @method('DELETE')
                         <div class="form-group">

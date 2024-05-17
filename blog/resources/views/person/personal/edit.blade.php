@@ -101,13 +101,13 @@
                     </form>
 
 
-                    <form class="" action="{{ route('admin.user.delete', $user->id) }}", method="POST">
+                    {{-- <form class="" action="{{ route('person.personal.delete', $user->id) }}", method="POST">
                         @csrf
                         @method('DELETE')
                         <div class="form-group">
                             <input type="submit" class="btn btn-danger" value="Удалить профиль">
                         </div>
-                    </form>
+                    </form> --}}
                 </div>
 
             </div>

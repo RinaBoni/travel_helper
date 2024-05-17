@@ -17,7 +17,8 @@ class CommentController extends Controller
     public function index()
     {
         $comments = auth()->user()->comments;
-        return view('person.comment.index', compact('comments'));
+        $exseption='';
+        return view('person.comment.index', compact('comments', 'exseption'));
     }
 
     public function edit(Comment $comment)

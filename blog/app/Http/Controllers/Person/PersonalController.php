@@ -21,38 +21,77 @@ class PersonalController extends Controller
         return view('person.personal.index', compact('user'));
     }
 
-    public function edit(Comment $comment)
+    public function edit(User $user)
     {
 
-        return view('person.comment.edit', compact('comment'));
+        return view('person.personal.edit', compact('user'));
     }
 
     public function update(UpdateRequest $request, User $user)
-    {
-        dd($request);
-        $data = $request->validated();
-        if (isset($data['user_image'])) {
-            $data['user_image'] = Storage::disk('public')->put('/images', $data['user_image']);
-        }
-        $updateData = [
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'user_image' => isset($data['user_image']) && $data['user_image'] !== '0' ? $data['user_image'] : null,
-            'lastname' => isset($data['lastname']) && $data['lastname'] !== '0' ? $data['lastname'] : null,
-            'phone_number' => isset($data['phone_number']) && $data['phone_number'] !== '0' ? $data['phone_number'] : null,
-            'car' => isset($data['car']) && $data['car'] !== '0' ? $data['car'] : null,
-            'newsletter' => isset($data['newsletter']) && $data['newsletter'] !== '0' ? $data['newsletter'] : null,
-        ];
-        $user->update($updateData);
-        return redirect()->route('person.personal.index');
+{
+    $authenticatedUser = auth()->user();
+
+    $data = $request->validated();
+
+    $comments = $authenticatedUser->comments;
+
+    if (isset($data['user_image'])) {
+        $data['user_image'] = Storage::disk('public')->put('/images', $data['user_image']);
     }
 
+    $updateData = [
+        'name' => $data['name'],
+        'email' => $data['email'],
+        'user_image' => isset($data['user_image']) && $data['user_image'] !== '0' ? $data['user_image'] : null,
+        'lastname' => isset($data['lastname']) && $data['lastname'] !== '0' ? $data['lastname'] : null,
+        'phone_number' => isset($data['phone_number']) && $data['phone_number'] !== '0' ? $data['phone_number'] : null,
+        'car' => isset($data['car']) && $data['car'] !== '0' ? $data['car'] : null,
+        'newsletter' => isset($data['newsletter']) && $data['newsletter'] !== '0' ? $data['newsletter'] : null,
+    ];
+
+    try {
+        $user->update($updateData);
+    } catch (\Exception $exception) {
+        $exception->getMessage();
+        return view('person.comment.index', compact('exception', 'comments'));
+    }
+    $exception='лох';
+    return view('person.comment.index', compact('exception', 'comments'));
+}
 
 
-    public function delete(Comment $comment)
+    // public function update(UpdateRequest $request, User $user)
+    // {
+    //     $user = auth()->user();
+    //     $data = $request->validated();
+    //     $comments = auth()->user()->comments;
+    //     if (isset($data['user_image'])) {
+    //         $data['user_image'] = Storage::disk('public')->put('/images', $data['user_image']);
+    //     }
+    //     $updateData = [
+    //         'name' => $data['name'],
+    //         'email' => $data['email'],
+    //         'user_image' => isset($data['user_image']) && $data['user_image'] !== '0' ? $data['user_image'] : null,
+    //         'lastname' => isset($data['lastname']) && $data['lastname'] !== '0' ? $data['lastname'] : null,
+    //         'phone_number' => isset($data['phone_number']) && $data['phone_number'] !== '0' ? $data['phone_number'] : null,
+    //         'car' => isset($data['car']) && $data['car'] !== '0' ? $data['car'] : null,
+    //         'newsletter' => isset($data['newsletter']) && $data['newsletter'] !== '0' ? $data['newsletter'] : null,
+    //     ];
+    //     try {
+    //         $user->update($updateData);
+    //     } catch (\Exception $exseption) {
+    //         $exseption->getMessage();
+    //         return view('person.comment.index', compact('exseption', 'comments'));
+    //     }
+    //     return redirect()->route('person.personal.index');
+    // }
+
+
+
+    public function delete(User $user)
     {
-        $comment->delete();
+        $user->delete();
         // dd($comments);
-        return redirect()->route('person.comment.index');
+        return redirect()->route('person.personal.index');
     }
 }

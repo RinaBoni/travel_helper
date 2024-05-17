@@ -113,9 +113,7 @@
         <div class="container">
             <div class="row footer-widget-area">
                 <div class="col-md-3">
-                    <a href="index.html" class="footer-brand-wrapper">
-                        <img src="{{ asset('assets/images/TRAVEL_purple.svg')}}" alt="edica logo">
-                    </a>
+                    <a class="navbar-brand" href="{{ route('main.index') }}"><img src="{{ asset('assets/images/TRANSBAIKAL_TOURISM_purple.svg')}}" alt="Edica"></a>
                     <p class="contact-details">почта</p>
                     <p class="contact-details">телефон</p>
                     <nav class="footer-social-links">
@@ -141,10 +139,10 @@
             </div>
             <div class="footer-bottom-content">
                 <nav class="nav footer-bottom-nav">
-                    <a href="#!">Приватность & Политика</a>
+                    <a href="#!">Приватность & Политика использования</a>
                     <a href="#!">Условия</a>
                 </nav>
-                <p class="mb-0">© Travel. 2024 <a href="#" target="_blank" rel="noopener noreferrer" class="text-reset"></a> . All rights reserved.</p>
+                <p class="mb-0">© Transbaikal Tourism. 2024 <a href="#" target="_blank" rel="noopener noreferrer" class="text-reset"></a> . All rights reserved.</p>
             </div>
         </div>
     </footer>

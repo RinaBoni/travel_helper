@@ -51,7 +51,7 @@
 
 
             <section class="featured-posts-section">
-                <h3 class="widget-title">Популярные посты</h3>
+                <h3 class="widget-title">Популярные достопримечательности</h3>
                 <div class="row">
 
                     @foreach ($likedPosts as $post)

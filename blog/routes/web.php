@@ -160,7 +160,7 @@ Route::group(['namespace' => 'Person', 'prefix' => 'person', 'middleware' => ['a
         Route::get('/', [PersonalController::class, 'index'])->name('person.personal.index');
         Route::get('/{personal}/edit', [PersonalController::class, 'edit'])->name('person.personal.edit');
         Route::patch('/', [PersonalController::class, 'update'])->name('person.personal.update');
-        // Route::delete('/{personal}', [PersonalController::class, 'delete'])->name('person.personal.delete');
+        Route::delete('/{personal}', [PersonalController::class, 'delete'])->name('person.personal.delete');
     });
 });
 

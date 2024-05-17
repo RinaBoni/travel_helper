@@ -24,10 +24,8 @@ class UpdateRequest extends FormRequest
         return [
             'name' => 'required|string',
             'email' => 'required|string|email|unique:users,' . $this->user_id,
-            'user_id' => 'required|integer|exists:users,id',
-            'role' => 'required|integer',
-            'lastname' => 'nullable|string',
-            'phone_number' => 'nullable|string',
+            'lastname' => 'required|string',
+            'phone_number' => 'required|string',
             'car' => 'nullable|boolean',
             'newsletter' => 'nullable|boolean',
             'user_image' => 'nullable|file',
@@ -37,6 +35,8 @@ class UpdateRequest extends FormRequest
     {
         return [
             'name.required' => 'Это поле необходимо заполнить',
+            'lastname.required' => 'Это поле необходимо заполнить',
+            'phone_number.required' => 'Это поле необходимо заполнить',
             'email.required' => 'Это поле необходимо заполнить',
             'name.string' => 'Имя должно быть строкой',
             'email.string' => 'Почта должно быть строкой',
