@@ -13,8 +13,7 @@ class PostFilter extends QueryFilter{
     }
 
 
-    public function tags($tagIds)
-    {
+    public function tags($tagIds = null){
         $tagIdsArray = $this->paramToArray($tagIds);
         return $this->builder->whereHas('tags', function (Builder $query) use ($tagIdsArray) {
             $query->whereIn('tag_id', $tagIdsArray);

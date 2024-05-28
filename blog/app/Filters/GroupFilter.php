@@ -13,7 +13,7 @@ class GroupFilter extends QueryFilter{
     }
 
 
-    public function tags($tags)
+    public function tags($tags = null)
     {
         $tagIds = $this->paramToArray($tags);
         return $this->builder->whereHas('post.tags', function (Builder $query) use ($tagIds) {
@@ -23,7 +23,7 @@ class GroupFilter extends QueryFilter{
 
 
 
-    public function search_field($value)
+    public function search_field($value = '')
     {
         $this->builder->where(function (Builder $query) use ($value) {
             $query->where('title', 'like', '%' . $value . '%') // Фильтр по названию группы

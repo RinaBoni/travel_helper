@@ -17,8 +17,8 @@ class SearchController extends Controller
     public function index(PostFilter $postFilter, GroupFilter $groupFilter){
         $tagss = Tag::all();
         $categories = Category::all();
-        $posts = Post::filter($postFilter)->paginate(9);
-        $groups = Group::filter($groupFilter)->get();;
+        $posts = Post::filter($postFilter)->get();
+        $groups = Group::filter($groupFilter)->get();
         return view('post.search', compact('tagss', 'posts', 'groups', 'categories'));
     }
 
