@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Post;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Group;
+use App\Models\GroupUser;
 use App\Models\Image;
 use App\Models\Post;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostPageController extends Controller
 {
@@ -39,7 +41,13 @@ class PostPageController extends Controller
             ->where('id', '!=', $post->id)
             ->get()
             ->take(3);
+        $groupUsers = GroupUser::all();
+        $currentUser = Auth::check() ? Auth::user()->id : null;
         $relatedGroups = $post->groups;
-        return view('post.show', compact('post', 'date', 'relatedPosts', 'relatedGroups', 'caruselImages'));
+        foreach($relatedGroups as $group){
+            $group->departure_date = Carbon::parse(($group->departure_date));
+            $group['arrival_date'] = Carbon::parse(($group->arrival_date));
+        }
+        return view('post.show', compact('post', 'date', 'relatedPosts', 'relatedGroups', 'caruselImages', 'groupUsers', 'currentUser'));
     }
 }

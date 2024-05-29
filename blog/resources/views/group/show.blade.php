@@ -57,7 +57,7 @@
                                 </form>
                             </div>
                         @else
-                            @if ($currentUserGroup)
+                            @if ($currentUserInGroup)
                                 <div class="col-lg-9 mx-auto" data-aos="fade-up">
                                     <div class="col-lg-9 mx-auto" data-aos="fade-up">
                                         <form action="{{ route('group.leave', $group->id) }}", method="POST">

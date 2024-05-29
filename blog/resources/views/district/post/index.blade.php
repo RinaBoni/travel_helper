@@ -53,11 +53,49 @@
                     <h2 class="section-title mb-4" >Группы в этот район</h2>
                     <div class="row">
                         @foreach ($groups as $group)
-                        <div class="col-md-4" data-aos="fade-right" data-aos-delay="100">
-                            <p class="post-category">{{ $group->post->title }}</p>
-                            <a href="{{ route('post.show', $group->id) }}" class="blog-post-permalink">
-                                <h6 class="blog-post-title">{{ $group->title }}</h6>
-                            </a>
+                        <div class="col-lg-4">
+                            <div class="card mb-3" style="width: 18rem;">
+                                <div class="card-body">
+                                    <a href="{{ route('group.show', $group->id) }}" class="blog-post-permalink">
+                                    <h5 class="card-title">{{$group->title}}</h5>
+                                    </a>
+                                    <p class="card-text">{{mb_substr($group->post->title, 0 , 100)}}</p>
+
+                                    <p>{{ $group->departure_date->translatedFormat('j F Y') }} - {{ $group->arrival_date->translatedFormat('j F Y') }}</p>
+
+                                    @foreach ($groupUsers as $userInGroup)
+                                        @if ($userInGroup->group_id == $group->id)
+                                            @if ($currentUser == $userInGroup->user_id)
+                                                @php
+                                                    $currentUserInGroup =  $currentUser
+                                                @endphp
+                                            @else
+                                                @php
+                                                    $currentUserInGroup =  null
+                                                @endphp
+                                            @endif
+                                        @endif
+                                    @endforeach
+                                    @auth
+                                        @if ($currentUserInGroup)
+                                        <form action="{{ route('group.join', $group->id) }}", method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-warning btn-lg" data-aos="" data-aos-delay="300">
+                                                Присоединиться
+                                            </button>
+                                        </form>
+                                        @else
+                                        <form action="{{ route('group.leave', $group->id) }}", method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-warning btn-lg" data-aos="" data-aos-delay="300">
+                                                Покинуть группу
+                                            </button>
+                                        </form>
+                                        @endif
+                                    @endauth
+
+                                </div>
+                            </div>
                         </div>
                         @endforeach
                     </div>

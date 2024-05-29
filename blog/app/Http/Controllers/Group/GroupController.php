@@ -18,7 +18,13 @@ class GroupController extends Controller
 {
     public function index(){
         $groups = Group::paginate(9);
-        return view('group.index', compact('groups'));
+        $groupUsers = GroupUser::all();
+        $currentUser = Auth::check() ? Auth::user()->id : null;
+        foreach($groups as $group){
+            $group->departure_date = Carbon::parse(($group->departure_date));
+            $group['arrival_date'] = Carbon::parse(($group->arrival_date));
+        }
+        return view('group.index', compact('groups', 'groupUsers', 'currentUser'));
     }
 
 
@@ -59,13 +65,13 @@ class GroupController extends Controller
         $users = $group->users;
         foreach($users as $user){
 
-            $currentUserGroup = $currentUser == $user['id'] ? $currentUser : null;
+            $currentUserInGroup = $currentUser == $user['id'] ? $currentUser : null;
         }
         $relatedGroups = Group::where('post_id', $group->post_id)
             ->where('id', '!=', $group->id)
             ->get()
             ->take(3);
-        return view('group.show', compact('group', 'departure_date', 'arrival_date', 'relatedGroups', 'currentUser', 'users', 'currentUserGroup'));
+        return view('group.show', compact('group', 'departure_date', 'arrival_date', 'relatedGroups', 'currentUser', 'users', 'currentUserInGroup'));
     }
 
 
