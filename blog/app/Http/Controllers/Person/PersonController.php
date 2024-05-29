@@ -22,7 +22,9 @@ class PersonController extends Controller
 
 
         $name = auth()->user()->name;
+        // $role = auth()->user()->role;
 
         return view('person.main.index', compact('data', 'name'));
+        // return view('person.main.index', compact('data', 'name', 'role'));
     }
 }

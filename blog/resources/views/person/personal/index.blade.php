@@ -27,6 +27,43 @@
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
             <div class="row">
+                <div class="col-6">
+
+                    <div class="card">
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-hover text-nowrap">
+                        <tbody>
+                            @if ($user->user_image)
+                                <tr>
+                                    <td>привью</td>
+                                    <td><img src="{{asset('storage/' . $user->user_image)}}" alt="user_image" class="w-50"></td>
+                                </tr>
+                            @endif
+                            <tr>
+                                <td>Имя</td>
+                                <td>{{$user->name}}</td>
+                            </tr>
+                            <tr>
+                                <td>Фамилия</td>
+                                <td>{{$user->lastname}}</td>
+                            </tr>
+                            <tr>
+                                <td>Почта</td>
+                                <td>{{ $user->email }}</td>
+                            </tr>
+                            <tr>
+                                <td>Номер телефона</td>
+                                <td>{{ $user->phone_number }}</td>
+                            </tr>
+
+                        </tbody>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                    </div>
+                </div>
+            </div>
+            <div class="row">
 
                 <div class="col-12">
                     <form action="{{ route('person.personal.update', $user->id) }}" method="POST" class="w-25" enctype="multipart/form-data">

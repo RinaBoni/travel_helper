@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Post;
 use Carbon\Carbon;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View as FacadesView;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\View;
@@ -29,5 +30,6 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrapFour();
         FacadesView::share('categoriess', Category::all());
         FacadesView::share('districtss', Post::distinct()->pluck('district'));
+        FacadesView::share('role', Auth::check() ? Auth::user()->role : null);
     }
 }

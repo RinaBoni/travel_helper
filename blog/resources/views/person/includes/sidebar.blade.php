@@ -49,12 +49,15 @@
                 </a>
             </li>
 
+            {{-- @if ($role == 1) --}}
+
             <li class="nav-item">
                 <a href="{{ route('admin.main.index') }}" class="nav-link">
                     <i class="nav-icon fa-solid fa-certificate"></i>
                     <p>Панель администратора</p>
                 </a>
             </li>
+            {{-- @endif --}}
 
 
         </ul>
