@@ -21,7 +21,8 @@ class AdminIndexController extends Controller
         $data['categoriesCount'] = Category::all()->count();
         $data['tagsCount'] = Tag::all()->count();
         // dd($data);
+        $likedPosts = Post::withCount('likedUsers')->orderBy('liked_users_count', 'DESC')->get()->take(5);
 
-        return view('admin.main.index', compact('data'));
+        return view('admin.main.index', compact('data', 'likedPosts'));
     }
 }

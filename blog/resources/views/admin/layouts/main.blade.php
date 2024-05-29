@@ -115,13 +115,20 @@
     <script src="{{ asset('dist/js/demo.js') }} "></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{ asset('dist/js/pages/dashboard.js') }} "></script>
-     <!-- ЗАГРУЗИТЬ МНОГО ФОТОГРАФИЙ -->
+    <!-- ЗАГРУЗИТЬ МНОГО ФОТОГРАФИЙ -->
     <!-- <script src="{{ asset('js/pic.js') }} "></script> -->
+    <!-- FLOT CHARTS -->
+    <script src="../../plugins/flot/jquery.flot.js"></script>
+    <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
+    <script src="../../plugins/flot/plugins/jquery.flot.resize.js"></script>
+    <!-- FLOT PIE PLUGIN - also used to draw donut charts -->
+    <script src="../../plugins/flot/plugins/jquery.flot.pie.js"></script>
 
 
 
     <!-- //подключаем ввод текста -->
     <script>
+
         $(document).ready(function() {
             $('#summernote').summernote({
                 toolbar: [
