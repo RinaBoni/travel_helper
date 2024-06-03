@@ -15,6 +15,7 @@ class Group extends Model
     protected $table = 'groups';
     //для возможности изменять таблицу
     protected $guarded = false;
+    protected $with = ['post'];
 
     public function post(){
         return $this->belongsTo(Post::class, 'post_id', 'id');

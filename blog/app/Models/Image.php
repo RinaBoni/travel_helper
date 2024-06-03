@@ -12,6 +12,7 @@ class Image extends Model
     protected $table = 'images';
     //для возможности изменять таблицу
     protected $guarded = false;
+    // protected $with = ['post'];
 
     public function post(){
         return $this->belongsTo(Post::class, 'post_id', 'id');
