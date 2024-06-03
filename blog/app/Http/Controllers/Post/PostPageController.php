@@ -46,7 +46,7 @@ class PostPageController extends Controller
         $relatedGroups = $post->groups;
         foreach($relatedGroups as $group){
             $group->departure_date = Carbon::parse(($group->departure_date));
-            $group['arrival_date'] = Carbon::parse(($group->arrival_date));
+            $group->arrival_date = Carbon::parse(($group->arrival_date));
         }
         return view('post.show', compact('post', 'date', 'relatedPosts', 'relatedGroups', 'caruselImages', 'groupUsers', 'currentUser'));
     }

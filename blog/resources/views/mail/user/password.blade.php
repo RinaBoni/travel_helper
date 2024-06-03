@@ -1,11 +1,11 @@
 <x-mail::message>
-# Добропожаловать на Travel Helper
+# Добропожаловать на Transbaikal Tourism
 Ваш пароль:
 
 <x-mail::button :url="''">
     {{ $password }}
 </x-mail::button>
 
-Thanks,<br>
-Travel Helper
+Успехов!<br>
+Transbaikal Tourism
 </x-mail::message>

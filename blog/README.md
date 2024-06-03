@@ -1,8 +1,8 @@
 
-## About Laravel
+## При запуске нужно запустить команды
 
-* везде видно дату 
-* везде есть кнопка присоединиться/покинуть группу
+* `php artisan queue:work`
+* `php artisan serve`
 
 - [Simple, fast routing engine](https://laravel.com/docs/routing).
 - [Powerful dependency injection container](https://laravel.com/docs/container).
