@@ -21,9 +21,10 @@ class PersonalController extends Controller
         return view('person.personal.index', compact('user'));
     }
 
-    public function edit(User $user)
+    public function edit(User $userr)
     {
-
+        $user = auth()->user();
+        // dd($userr);
         return view('person.personal.edit', compact('user'));
     }
 

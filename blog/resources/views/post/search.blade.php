@@ -10,7 +10,7 @@
                 <label for="exampleFormControlInput1" class="form-label">Поиск</label>
                 <input name="search_field" @if(isset($_GET['search_field'])) value="{{$_GET['search_field']}}" @endif type="text" class="form-control" id="exampleFormControlInput1" placeholder="Введите запрос">
             </div>
-            <div class="row mb-5">
+            {{-- <div class="row mb-5">
                 <div class="col-lg-9 mx-auto">
                     <section class="related-posts">
                         <div class="row">
@@ -45,7 +45,7 @@
                         </div>
                     </section>
                 </div>
-            </div>
+            </div> --}}
             <div class="row mb-5">
                 <div class="col-lg-9 mx-auto">
                     <section class="related-posts">
@@ -80,7 +80,14 @@
                             <a href="{{ route('post.show', $post->id) }}" class="blog-post-permalink">
                                 <h5 class="card-title">{{$post->title}}</h5>
                             </a>
-                            <p class="card-text">{{ mb_substr( $post->content , 0 , 100) }}...</p>
+                            {{-- <p class="card-text">{!! $post->content !!}...</p> --}}
+                            <p class="card-text">
+                                @php
+                                    $plainText = strip_tags($post->content);
+                                @endphp
+                                {{ mb_substr( $plainText , 0 , 100) }}...
+                            </p>
+                            {{-- <p class="card-text">{!! mb_substr( $post->content , 0 , 150) !!}...</p> --}}
                             <div class="btn btn-primary">{{$post->category['title']}}</div>
                             @foreach ($tagss as $tag)
                             @if (in_array($tag->id, $post->tags->pluck('id')->toArray()))

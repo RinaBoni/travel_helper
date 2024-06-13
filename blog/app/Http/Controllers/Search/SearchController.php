@@ -14,14 +14,27 @@ use Illuminate\Http\Request;
 class SearchController extends Controller
 {
     //этот метод позволяет при обращении к контроллера автоматически будет использоваться этот метод
-    public function index(PostFilter $postFilter, GroupFilter $groupFilter){
-        $tagss = Tag::all();
-        $categories = Category::all();
-        $posts = Post::filter($postFilter)->get();
-        $groups = Group::filter($groupFilter)->get();
-        return view('post.search', compact('tagss', 'posts', 'groups', 'categories'));
-    }
+    // public function index(PostFilter $postFilter, GroupFilter $groupFilter){
+    //     $tagss = Tag::all();
+    //     $categories = Category::all();
+    //     $posts = Post::filter($postFilter)->get();
+    //     $groups = Group::filter($groupFilter)->get();
+    //     return view('post.search', compact('tagss', 'posts', 'groups', 'categories'));
+    // }
 
+
+
+    public function index(Request $request)
+    {
+        $posts_queery = Post::query();
+        $search_param = $request->query('q');
+        if($search_param){
+            $posts_queery = Post::search($search_param);
+        }
+        $posts = $posts_queery->get();
+        return view('post.search', compact('posts', 'search_param'));
+
+    }
     public function post(Request $request)
     {
         $input = $request->all();

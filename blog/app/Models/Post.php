@@ -7,11 +7,13 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravel\Scout\Searchable;
 
 class Post extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    use Searchable;
 
     //делаем явную привязку таблиц
     protected $table = 'posts';
@@ -19,6 +21,14 @@ class Post extends Model
     protected $guarded = false;
     protected $withCount = ['likedUsers'];
     protected $with = ['category'];
+
+    public function toSearchableArray()
+    {
+        return[
+            'title' => $this->title,
+            'content' => $this->content,
+        ];
+    }
 
     public function tags(){
         // return $this->belongsToMany(Tag::class, 'post_tags', 'post_id', 'tag_id');
