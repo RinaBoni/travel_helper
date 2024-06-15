@@ -101,7 +101,7 @@
 
                     @if ($relatedPosts->count() > 0 )
                         <section class="related-posts">
-                            <h2 class="section-title mb-4" >Схожие посты</h2>
+                            <h2 class="section-title mb-4" >Похожие достопримечательности</h2>
                             <div class="row">
                                 @foreach ($relatedPosts as $relatedPosts)
                                     <div class="col-md-4" data-aos="fade-right" data-aos-delay="100">
@@ -134,6 +134,9 @@
                                                         @php
                                                             $currentUserInGroup =  $currentUser
                                                         @endphp
+                                                        @php
+                                                            break
+                                                        @endphp
                                                     @else
                                                         @php
                                                             $currentUserInGroup =  null
@@ -143,19 +146,20 @@
                                             @endforeach
                                             @auth
                                                 @if ($currentUserInGroup)
-                                                <form action="{{ route('group.join', $group->id) }}", method="POST">
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-warning btn-lg" data-aos="" data-aos-delay="300">
-                                                        Присоединиться
-                                                    </button>
-                                                </form>
-                                                @else
                                                 <form action="{{ route('group.leave', $group->id) }}", method="POST">
                                                     @csrf
                                                     <button type="submit" class="btn btn-warning btn-lg" data-aos="" data-aos-delay="300">
                                                         Покинуть группу
                                                     </button>
                                                 </form>
+                                                @else
+                                                <form action="{{ route('group.join', $group->id) }}", method="POST">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-warning btn-lg" data-aos="" data-aos-delay="300">
+                                                        Присоединиться
+                                                    </button>
+                                                </form>
+
                                                 @endif
                                             @endauth
 

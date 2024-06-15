@@ -69,6 +69,9 @@
                                                 @php
                                                     $currentUserInGroup =  $currentUser
                                                 @endphp
+                                                @php
+                                                    break
+                                                @endphp
                                             @else
                                                 @php
                                                     $currentUserInGroup =  null
@@ -78,17 +81,18 @@
                                     @endforeach
                                     @auth
                                         @if ($currentUserInGroup)
-                                        <form action="{{ route('group.join', $group->id) }}", method="POST">
-                                            @csrf
-                                            <button type="submit" class="btn btn-warning btn-lg" data-aos="" data-aos-delay="300">
-                                                Присоединиться
-                                            </button>
-                                        </form>
-                                        @else
                                         <form action="{{ route('group.leave', $group->id) }}", method="POST">
                                             @csrf
                                             <button type="submit" class="btn btn-warning btn-lg" data-aos="" data-aos-delay="300">
                                                 Покинуть группу
+                                            </button>
+                                        </form>
+
+                                        @else
+                                        <form action="{{ route('group.join', $group->id) }}", method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-warning btn-lg" data-aos="" data-aos-delay="300">
+                                                Присоединиться
                                             </button>
                                         </form>
                                         @endif

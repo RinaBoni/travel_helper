@@ -22,7 +22,7 @@
                         @foreach ($users as $user)
                         @if ($user->id == $currentUser)
                             <div>
-                                Вы состоите в группе
+                                <em>Вы состоите в группе</em>
                             </div>
                         @endif
                         @endforeach

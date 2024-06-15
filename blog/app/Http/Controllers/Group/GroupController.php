@@ -64,9 +64,17 @@ class GroupController extends Controller
         $group_id = $group['id'];
         $users = $group->users;
         foreach($users as $user){
-
-            $currentUserInGroup = $currentUser == $user['id'] ? $currentUser : null;
+            if($currentUser == $user['id']){
+                $currentUserInGroup = true;
+                break;
+            }
+            else{
+                $currentUserInGroup = false;
+            }
+            // $currentUserInGroup = $currentUser != $user['id'] ? true : false;
+            // dd($currentUser, $user['id'] );
         }
+        // dd($currentUserInGroup);
         $relatedGroups = Group::where('post_id', $group->post_id)
             ->where('id', '!=', $group->id)
             ->get()

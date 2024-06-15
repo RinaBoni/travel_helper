@@ -16,37 +16,42 @@
                                 <p class="card-text">{{mb_substr($group->post->title, 0 , 100)}}</p>
 
                                 <p>{{ $group->departure_date->translatedFormat('j F Y') }} - {{ $group->arrival_date->translatedFormat('j F Y') }}</p>
-
-                                @foreach ($groupUsers as $userInGroup)
-                                    @if ($userInGroup->group_id == $group->id)
-                                        @if ($currentUser == $userInGroup->user_id)
-                                            @php
-                                                $currentUserInGroup =  $currentUser
-                                            @endphp
-                                        @else
-                                            @php
-                                                $currentUserInGroup =  null
-                                            @endphp
-                                        @endif
+                                {{-- <p>{{ $group->users }}</p> --}}
+                                @foreach ($group->users as $user_in_group)
+                                    @if($currentUser == $user_in_group->id)
+                                        @php
+                                            $current_user_in_group =  $currentUser
+                                        @endphp
+                                        @php
+                                            break
+                                        @endphp
+                                    @elseif ($currentUser != $user_in_group->id)
+                                        @php
+                                            $current_user_in_group = null
+                                        @endphp
                                     @endif
                                 @endforeach
+
                                 @auth
-                                    @if ($currentUserInGroup)
-                                    <form action="{{ route('group.join', $group->id) }}", method="POST">
-                                        @csrf
-                                        <button type="submit" class="btn btn-warning btn-lg" data-aos="" data-aos-delay="300">
-                                            Присоединиться
-                                        </button>
-                                    </form>
-                                    @else
+                                    @if ($current_user_in_group)
                                     <form action="{{ route('group.leave', $group->id) }}", method="POST">
                                         @csrf
-                                        <button type="submit" class="btn btn-warning btn-lg" data-aos="" data-aos-delay="300">
+                                        <button type="submit" class="btn btn-primary" data-aos="" data-aos-delay="300">
                                             Покинуть группу
+                                        </button>
+                                    </form>
+
+                                    @elseif ($current_user_in_group == null)
+                                    <form action="{{ route('group.join', $group->id) }}", method="POST">
+                                        @csrf
+                                        <button type="submit" class="btn btn-primary" data-aos="" data-aos-delay="300">
+                                            Присоединиться
                                         </button>
                                     </form>
                                     @endif
                                 @endauth
+
+
 
                             </div>
                         </div>
