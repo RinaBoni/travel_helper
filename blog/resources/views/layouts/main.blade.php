@@ -20,6 +20,7 @@
 
     <script src="{{ asset('assets/vendors/jquery/jquery.min.js')}}"></script>
     <script src="{{ asset('assets/js/loader.js')}}"></script>
+    @livewireStyles
 </head>
 <body>
     <div class="edica-loader"></div>
@@ -146,6 +147,7 @@
             </div>
         </div>
     </footer>
+    @livewireScripts
     <script src="{{ asset('assets/vendors/popper.js/popper.min.js')}}"></script>
     <script src="{{ asset('assets/vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
     <script src="{{ asset('assets/vendors/aos/aos.js')}}"></script>
@@ -153,7 +155,7 @@
     {{-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"> --}}
     <script src="https://kit.fontawesome.com/b28275dfc4.js" crossorigin="anonymous"></script>
-    // <script type="text/javascript">
+    {{-- <script type="text/javascript">
     //     var route = "{{url('users/search')}}";
     //     $('#users').typeahead({
     //         source: function(query, process) {
@@ -164,8 +166,8 @@
     //         });
     //         }
     //     });
-    // </script>
-    // <script>
+    // </script> --}}
+     <script>
         AOS.init({
             duration: 1000
         });

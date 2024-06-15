@@ -22,20 +22,29 @@ class Post extends Model
     protected $withCount = ['likedUsers'];
     protected $with = ['category'];
 
-    public function toSearchableArray()
-    {
-        return[
-            'title' => $this->title,
-            'content' => $this->content,
-        ];
-    }
-
     public function tags(){
         // return $this->belongsToMany(Tag::class, 'post_tags', 'post_id', 'tag_id');
         return $this->belongsToMany(Tag::class, 'post_tags');
+    }
+    public function toSearchableArray()
+    {
+        $array = $this->toArray();
 
+        // Добавление тегов в массив для поиска
+        $array['tags'] = $this->tags->pluck('id')->toArray();
+
+        return $array;
     }
 
+    public function shouldBeSearchable()
+    {
+        // return $this->category !== null;
+    }
+
+    public function searchableAs(): string
+    {
+        return 'posts_index';
+    }
     public function category(){
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
@@ -56,4 +65,12 @@ class Post extends Model
     public function scopeFilter(Builder $builder, QueryFilter $filter){
         return $filter->apply($builder);
     }
+
+    // public function toSearchableArray()
+    // {
+    //     return[
+    //         'title' => $this->title,
+    //         'content' => $this->content,
+    //     ];
+    // }
 }

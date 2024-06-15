@@ -1,8 +1,15 @@
 
 ## При запуске нужно запустить команды
 
-* `php artisan queue:work`
 * `php artisan serve`
+* `php artisan queue:work`
+
+после обновления постов
+* `php artisan scout:import "App\Models\Post"`
+
+в папке meilisearch
+
+* `.\target\release\meilisearch.exe`
 
 - [Simple, fast routing engine](https://laravel.com/docs/routing).
 - [Powerful dependency injection container](https://laravel.com/docs/container).
